@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -6,10 +8,26 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl">
         {/* Contenu du footer */}
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          {/* Copyright */}
-          <p className="text-xs text-muted sm:text-sm">
-            © {currentYear} Thomas Giberné. Tous droits réservés.
-          </p>
+          {/* Copyright et liens légaux */}
+          <div className="flex flex-col items-center gap-3 sm:items-start">
+            <p className="text-xs text-muted sm:text-sm">
+              © {currentYear} Thomas Giberné. Tous droits réservés.
+            </p>
+            <div className="flex gap-4">
+              <Link
+                href="/mentions-legales"
+                className="text-xs transition-colors hover:text-black dark:hover:text-white sm:text-sm"
+              >
+                Mentions légales
+              </Link>
+              <Link
+                href="/cgv"
+                className="text-xs transition-colors hover:text-black dark:hover:text-white sm:text-sm"
+              >
+                CGV
+              </Link>
+            </div>
+          </div>
 
           {/* Social Links */}
           <div className="flex gap-6">
