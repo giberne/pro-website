@@ -7,7 +7,12 @@ import { ModalProvider } from '@/contexts/ModalContext'
 
 export const metadata: Metadata = {
   // --- URL DE BASE DU SITE (IMPORTANT pour SEO) ---
-  metadataBase: new URL('https://thomasgiberne.akisama.fr'),
+  metadataBase: new URL('https://giberne.dev'),
+
+  // --- URL CANONIQUE (Redirection www vers domaine principal) ---
+  alternates: {
+    canonical: 'https://giberne.dev',
+  },
 
   // --- METADONNÉES PRINCIPALES (SEO) ---
   title: 'Thomas Giberné | Création de Site Web & Identité de Marque',
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://thomasgiberne.akisama.fr',
+    url: 'https://giberne.dev',
     siteName: 'Thomas Giberné | Design & Développement',
     title: 'Thomas Giberné | Designer & Développeur - De la vision au produit fini',
     description: 'Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d\'interface et identités de marque fortes.',
@@ -100,6 +105,26 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
+        {/* Open Graph pour les previews réseaux sociaux */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="Thomas Giberné | Design & Développement" />
+        <meta property="og:title" content="Thomas Giberné | Designer & Développeur - De la vision au produit fini" />
+        <meta property="og:description" content="Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d'interface et identités de marque fortes." />
+        <meta property="og:url" content="https://giberne.dev" />
+        <meta property="og:image" content="https://giberne.dev/images/pro-banner.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Thomas Giberné - Création de site web et identité de marque" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@akisama_fr" />
+        <meta name="twitter:title" content="Thomas Giberné | Designer & Développeur - De la vision au produit fini" />
+        <meta name="twitter:description" content="Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d'interface et identités de marque fortes." />
+        <meta name="twitter:image" content="https://giberne.dev/images/pro-banner.png" />
+
+        {/* Calendly CSS */}
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"

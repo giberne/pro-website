@@ -51,10 +51,10 @@ export default function Header() {
         </div>
 
         {/* Titre centré - plus petit sur mobile */}
-        <h1 className="pointer-events-auto flex items-center gap-2 font-bold uppercase leading-none tracking-tight text-xs sm:text-sm">
+        <p className="pointer-events-auto flex items-center gap-2 font-bold uppercase leading-none tracking-tight text-xs sm:text-sm">
           <span>Thomas</span>
           <span>Giberné</span>
-        </h1>
+        </p>
 
         {/* Bouton CTA à droite en position absolue */}
         <div className="pointer-events-auto absolute right-4 sm:right-6 lg:right-8">
