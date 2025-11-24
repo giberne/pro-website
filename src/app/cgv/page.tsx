@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import HeaderV2 from '@/components/v2/layout/HeaderV2'
+import FooterV2 from '@/components/v2/layout/FooterV2'
+import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Conditions Générales de Vente | Thomas Giberné',
@@ -12,51 +15,38 @@ export const metadata: Metadata = {
 
 export default function CGVPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      {/* Header simple */}
-      <header className="border-b border-gray-200 dark:border-gray-800">
-        <div className="mx-auto max-w-4xl px-6 py-6">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m15 18-6-6 6-6"/>
-            </svg>
-            Retour à l&apos;accueil
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen v2-wrapper" style={{ background: 'var(--color-bg-gradient)' }}>
+      <HeaderV2 />
 
-      {/* Contenu principal */}
-      <main className="mx-auto max-w-4xl px-6 py-12">
-        <h1 className="mb-8 text-4xl font-bold text-black dark:text-white">
+      <main className="container-v2 py-12 md:py-20">
+        {/* Retour à l'accueil */}
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors mb-8"
+        >
+          <ArrowLeft size={16} />
+          Retour à l&apos;accueil
+        </Link>
+
+        {/* Titre principal */}
+        <h1 className="text-4xl md:text-5xl font-bold mb-12" style={{ fontFamily: 'var(--font-headings)' }}>
           Conditions Générales de Vente
         </h1>
 
-        <div className="space-y-12 text-gray-700 dark:text-gray-300">
+        {/* Contenu dans une carte */}
+        <div className="card-upper space-y-12">
           {/* Chapitre 1 */}
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold text-black dark:text-white">
+            <h2 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: 'var(--font-headings)' }}>
               Chapitre 1 : Dispositions Générales et Conditions des Prestations de Création
             </h2>
 
             {/* Article 1 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 1 : Champ d&apos;application
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Les présentes Conditions Générales de Vente (CGV) régissent l&apos;ensemble des prestations
                 de services fournies par Thomas Giberné, exerçant sous le nom commercial{' '}
                 <strong>The Crystal Lad</strong> (ci-après &quot;le Prestataire&quot;), notamment en
@@ -67,11 +57,11 @@ export default function CGVPage() {
             </section>
 
             {/* Article 2 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 2 : Définitions
               </h3>
-              <ul className="list-disc space-y-2 pl-6 leading-relaxed">
+              <ul className="list-disc space-y-2 pl-6 leading-relaxed text-[var(--color-foreground)]">
                 <li>
                   <strong>Prestataire</strong> : The Crystal Lad, micro-entreprise exploitée par Thomas Giberné,
                   immatriculée sous le SIRET 99336665700019, dont le siège social est situé au 513 Avenue du Val
@@ -89,16 +79,16 @@ export default function CGVPage() {
             </section>
 
             {/* Article 3 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 3 : Devis et Commande
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Toute prestation fait l&apos;objet d&apos;un devis détaillé, précisant le périmètre, le planning
                 indicatif, le prix et les conditions particulières. Le devis est valable <strong>30 jours</strong> à
                 compter de sa date d&apos;émission.
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 La commande est considérée comme ferme et définitive à réception par le Prestataire du{' '}
                 <strong>devis daté et signé</strong> avec la mention &quot;Bon pour accord&quot; ET du{' '}
                 <strong>paiement de l&apos;acompte de 30%</strong> du montant total, sauf mention contraire sur le devis.
@@ -106,17 +96,17 @@ export default function CGVPage() {
             </section>
 
             {/* Article 4 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 4 : Exécution et Livraison de la Prestation
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Le devis délimite précisément le périmètre des prestations. Sauf mention contraire,{' '}
                 <strong>deux (2) phases de retours et modifications</strong> sont incluses. Tout travail ne
                 figurant pas sur le devis ou toute phase de retours supplémentaire fera l&apos;objet d&apos;un
                 devis complémentaire.
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 À la livraison finale, le Client dispose de <strong>5 jours ouvrés</strong> pour émettre par
                 écrit d&apos;éventuelles réserves. En l&apos;absence de réserve dans ce délai, la prestation
                 est considérée comme définitivement acceptée.
@@ -124,11 +114,11 @@ export default function CGVPage() {
             </section>
 
             {/* Article 5 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 5 : Obligations du Client
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Le Client s&apos;engage à collaborer activement avec le Prestataire en fournissant en temps utile
                 l&apos;ensemble des contenus nécessaires (textes, images, logos, etc.), dont il certifie posséder
                 les droits d&apos;exploitation. Tout retard de la part du Client dans la fourniture d&apos;informations
@@ -137,17 +127,17 @@ export default function CGVPage() {
             </section>
 
             {/* Article 6 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 6 : Propriété Intellectuelle et Droit de Citation
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Sous réserve du paiement intégral du prix, le Prestataire cède au Client les droits patrimoniaux
                 sur les livrables créés spécifiquement pour lui, pour les usages et supports définis dans le devis.
                 Les fichiers sources (fichiers de travail natifs) ne sont pas inclus dans la cession, sauf accord
                 spécifique et facturation complémentaire.
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 Le Prestataire conserve la propriété de son savoir-faire, de ses outils et de ses composants logiciels
                 préexistants. Sauf demande écrite contraire du Client, le Prestataire se réserve le droit de mentionner
                 sa réalisation comme référence dans ses supports de communication (portfolio, site web, etc.).
@@ -155,34 +145,34 @@ export default function CGVPage() {
             </section>
 
             {/* Article 7 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 7 : Tarifs et Modalités de Paiement
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Les prix des prestations sont indiqués en euros (€). En tant que micro-entrepreneur, le Prestataire
                 bénéficie de la franchise en base de TVA : <strong>TVA non applicable, art. 293 B du CGI.</strong>{' '}
                 Les prix sont donc nets de taxes.
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 Sauf mention contraire sur le devis, les modalités de paiement sont :
               </p>
-              <ul className="mt-2 list-disc space-y-1 pl-6 leading-relaxed">
+              <ul className="mt-2 list-disc space-y-1 pl-6 leading-relaxed text-[var(--color-foreground)]">
                 <li><strong>30% d&apos;acompte</strong> à la commande.</li>
                 <li><strong>70% de solde</strong> à la livraison de la prestation.</li>
               </ul>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 Paiement s&apos;effectue par virement bancaire ou via plateforme sécurisée (Stripe, Whop ou équivalent).
                 Le solde est payable <strong>à réception de la facture finale</strong>.
               </p>
             </section>
 
             {/* Article 8 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 8 : Pénalités de Retard
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Conformément à la loi, tout retard de paiement entraînera de plein droit l&apos;application de
                 pénalités de retard calculées sur la base du taux d&apos;intérêt appliqué par la BCE à son opération
                 de refinancement la plus récente majoré de 10 points de pourcentage, ainsi qu&apos;une{' '}
@@ -191,28 +181,28 @@ export default function CGVPage() {
             </section>
 
             {/* Article 9 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 9 : Responsabilité et Garantie
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Le Prestataire est tenu par une <strong>obligation de moyens</strong>. Il s&apos;engage à réaliser
                 les prestations avec tout le soin et la diligence requis. Sa responsabilité ne pourra être engagée
                 pour un préjudice qui résulterait d&apos;une faute du Client (ex: fourniture d&apos;informations
                 erronées) ou d&apos;un problème lié à des services tiers (hébergeur, registar, etc.).
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 En tout état de cause, la responsabilité du Prestataire est <strong>limitée au montant total hors
                 taxes payé par le Client</strong> pour la prestation concernée.
               </p>
             </section>
 
             {/* Article 10 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 10 : Maintenance et Support
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Une garantie corrective de 30 jours est incluse après la mise en ligne, couvrant les bugs imputables
                 au travail du Prestataire. Toute intervention ultérieure, qu&apos;elle soit corrective, évolutive ou
                 de support, est réalisée dans le cadre d&apos;un <strong>contrat de maintenance optionnel</strong> ou
@@ -221,38 +211,38 @@ export default function CGVPage() {
             </section>
 
             {/* Article 11 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 11 : Annulation et Résiliation
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 En cas d&apos;annulation de la commande par le Client avant son démarrage, l&apos;acompte versé reste
                 acquis au Prestataire à titre de dédommagement. Si l&apos;annulation intervient en cours de projet,
                 le Prestataire facturera les travaux déjà réalisés au prorata.
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 Chaque partie peut résilier le contrat en cas de manquement grave de l&apos;autre partie, après une
                 mise en demeure par lettre recommandée restée sans effet pendant 15 jours.
               </p>
             </section>
 
             {/* Article 12 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 12 : Force Majeure
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Aucune des parties ne pourra être tenue pour responsable d&apos;un manquement à ses obligations
                 contractuelles dû à un événement de force majeure, tel que défini par la jurisprudence française.
               </p>
             </section>
 
             {/* Article 13 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 13 : Droit Applicable et Juridiction
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Les présentes CGV sont soumises au <strong>droit français</strong>. En cas de litige, et après une
                 tentative de résolution amiable, compétence exclusive est attribuée aux{' '}
                 <strong>tribunaux de Montpellier</strong>.
@@ -261,20 +251,20 @@ export default function CGVPage() {
           </div>
 
           {/* Chapitre 2 */}
-          <div className="space-y-8 border-t border-gray-200 pt-12 dark:border-gray-800">
-            <h2 className="text-3xl font-bold text-black dark:text-white">
+          <div className="space-y-8 border-t border-[var(--color-bg-under)] pt-12">
+            <h2 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: 'var(--font-headings)' }}>
               Chapitre 2 : Conditions Spécifiques aux Services de Maintenance
             </h2>
-            <p className="italic text-gray-600 dark:text-gray-400">
+            <p className="italic text-[var(--color-muted)]">
               (Applicable aux Clients ayant souscrit à un service de maintenance)
             </p>
 
             {/* Article 14 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 14 : Objet et Souscription au Service de Maintenance
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Le service de maintenance a pour objet d&apos;assurer le bon fonctionnement, la sécurité et la
                 performance du site web du Client. La souscription est formalisée par l&apos;acceptation d&apos;un
                 devis spécifiant la formule choisie (annuelle ou mensuelle) et le tarif applicable.
@@ -282,18 +272,18 @@ export default function CGVPage() {
             </section>
 
             {/* Article 15 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 15 : Formules d&apos;Abonnement et Engagement
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Le Client peut opter pour l&apos;une des formules suivantes :
               </p>
 
               <div className="mt-4 space-y-4">
                 <div>
-                  <h4 className="mb-2 font-semibold text-black dark:text-white">15.1. Formule Annuelle :</h4>
-                  <ul className="list-disc space-y-2 pl-6 leading-relaxed">
+                  <h4 className="mb-2 font-semibold text-[var(--color-foreground)]">15.1. Formule Annuelle :</h4>
+                  <ul className="list-disc space-y-2 pl-6 leading-relaxed text-[var(--color-foreground)]">
                     <li>
                       <strong>Engagement :</strong> Le service est souscrit pour une période initiale ferme de{' '}
                       <strong>douze (12) mois</strong>.
@@ -312,8 +302,8 @@ export default function CGVPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-semibold text-black dark:text-white">15.2. Formule Mensuelle :</h4>
-                  <ul className="list-disc space-y-2 pl-6 leading-relaxed">
+                  <h4 className="mb-2 font-semibold text-[var(--color-foreground)]">15.2. Formule Mensuelle :</h4>
+                  <ul className="list-disc space-y-2 pl-6 leading-relaxed text-[var(--color-foreground)]">
                     <li>
                       <strong>Engagement :</strong> Le service est souscrit pour une période initiale ferme de{' '}
                       <strong>douze (12) mois</strong>, renouvelable par tacite reconduction chaque mois après
@@ -335,14 +325,14 @@ export default function CGVPage() {
             </section>
 
             {/* Article 16 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 16 : Périmètre des Services Inclus
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Sauf mention contraire sur le devis, le service de maintenance inclut :
               </p>
-              <ul className="mt-4 list-disc space-y-2 pl-6 leading-relaxed">
+              <ul className="mt-4 list-disc space-y-2 pl-6 leading-relaxed text-[var(--color-foreground)]">
                 <li>
                   <strong>Support Technique :</strong> Corrections de bugs, mises à jour de sécurité, monitoring
                   de disponibilité. Prise en charge des demandes par email avec une réponse sous 72h (jours ouvrés).
@@ -364,11 +354,11 @@ export default function CGVPage() {
             </section>
 
             {/* Article 17 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 17 : Prestations Exclues de la Maintenance
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Sont exclus et feront l&apos;objet d&apos;un devis séparé : la création de nouvelles pages ou
                 fonctionnalités majeures, la refonte design et les campagnes marketing et tout autres services
                 non mentionnés ci-dessus.
@@ -376,31 +366,31 @@ export default function CGVPage() {
             </section>
 
             {/* Article 18 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 18 : Accès et Administration
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 Pour garantir l&apos;intégrité et la sécurité du site, et pour permettre l&apos;exécution efficace
                 des prestations de maintenance et d&apos;hébergement,{' '}
                 <strong>le Prestataire conservera les accès exclusifs d&apos;administration au serveur
                 d&apos;hébergement et au back-office du site</strong> pendant toute la durée du contrat de maintenance.
               </p>
-              <p className="mt-4 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-[var(--color-foreground)]">
                 Des accès de type &quot;éditeur&quot; ou &quot;contributeur&quot;, permettant la gestion de contenu,
                 pourront être fournis au Client sur demande.
               </p>
             </section>
 
             {/* Article 19 */}
-            <section>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+            <section className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold" style={{ fontFamily: 'var(--font-headings)' }}>
                 Article 19 : Fin du Contrat de Maintenance
               </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[var(--color-foreground)]">
                 À la résiliation du contrat, quelle qu&apos;en soit la cause :
               </p>
-              <ul className="mt-4 list-disc space-y-2 pl-6 leading-relaxed">
+              <ul className="mt-4 list-disc space-y-2 pl-6 leading-relaxed text-[var(--color-foreground)]">
                 <li>
                   Le Prestataire cesse toute prestation de maintenance, de surveillance et d&apos;hébergement à la
                   date de fin effective du service.
@@ -422,27 +412,15 @@ export default function CGVPage() {
           </div>
 
           {/* Date de dernière mise à jour */}
-          <div className="mt-12 border-t border-gray-200 pt-6 dark:border-gray-800">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="mt-12 border-t border-[var(--color-bg-under)] pt-6">
+            <p className="text-sm text-[var(--color-muted)]">
               Dernière mise à jour : 07/11/2025
             </p>
           </div>
         </div>
       </main>
 
-      {/* Footer simple */}
-      <footer className="border-t border-gray-200 dark:border-gray-800">
-        <div className="mx-auto max-w-4xl px-6 py-6">
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
-            <Link href="/" className="hover:text-black dark:hover:text-white transition-colors">
-              Accueil
-            </Link>
-            <Link href="/mentions-legales" className="hover:text-black dark:hover:text-white transition-colors">
-              Mentions légales
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <FooterV2 />
     </div>
   )
 }

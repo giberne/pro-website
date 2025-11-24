@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { poppins, chivoMono } from './fonts'
+import { poppins as poppinsV2, chivoMono as chivoMonoV2, oxanium } from './fonts-v2'
 import './globals.css'
+import './globals-v2.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import { ModalProvider } from '@/contexts/ModalContext'
 
@@ -130,7 +132,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${poppins.variable} ${chivoMono.variable} antialiased`}>
+      <body className={`${poppins.variable} ${chivoMono.variable} ${poppinsV2.variable} ${chivoMonoV2.variable} ${oxanium.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <ModalProvider>
             {children}

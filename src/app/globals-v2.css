@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* ===================================
+   TAILWIND V4 - DARK MODE VARIANT
+   =================================== */
+/* Pas de dark mode pour la v2 - Light mode uniquement */
+
+/* ===================================
+   VARIABLES CSS - STYLE GUIDE V2
+   =================================== */
+:root {
+  /* ========== COULEURS ========== */
+
+  /* Arrière-plans (3 niveaux de profondeur) */
+  --color-bg-upper: #FFFFFF;        /* Cartes surélevées */
+  --color-bg-ground: #F2F2F2;       /* Fond moyen */
+  --color-bg-under: #E6E6E6;        /* Éléments en creux */
+  --color-bg-gradient: linear-gradient(90deg, #E7F1FE, #E7E8FE);
+
+  /* Couleurs sémantiques */
+  --color-primary: #3C87DD;         /* Bleu principal */
+  --color-foreground: #0D0D0D;      /* Texte principal / bordures */
+  --color-muted: #4D4D4D;           /* Texte secondaire */
+
+  /* ========== TYPOGRAPHIE ========== */
+
+  --font-logo: var(--font-chivo-mono-v2);
+  --font-headings: var(--font-oxanium-v2);
+  --font-body: var(--font-poppins-v2);
+
+  /* ========== ESPACEMENTS ========== */
+
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 64px;
+
+  /* ========== BORDER RADIUS ========== */
+
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-full: 500px;
+
+  /* ========== OMBRES ========== */
+
+  --shadow-md: 0px 3px 16px rgba(0, 0, 0, 0.15);
+  --shadow-primary: 0px 3px 16px rgba(60, 135, 221, 0.30);
+  --shadow-lg: 0px 5px 32px rgba(0, 0, 0, 0.25);
+  --inner-shadow: inset 0px 3px 16px rgba(0, 0, 0, 0.15);
+
+  /* ========== BORDURES ========== */
+
+  --border-width: 3px;
+  --border-color-primary: var(--color-primary);
+  --border-color-foreground: var(--color-foreground);
+}
+
+/* ===================================
+   TAILWIND V4 - THEME CONFIGURATION
+   =================================== */
+@theme inline {
+  /* Map des couleurs pour Tailwind */
+  --color-primary: var(--color-primary);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+
+  /* Background colors */
+  --color-bg-upper: var(--color-bg-upper);
+  --color-bg-ground: var(--color-bg-ground);
+  --color-bg-under: var(--color-bg-under);
+}
+
+/* ===================================
+   CLASSES UTILITAIRES - CARTES V2
+   =================================== */
+
+/* Card Upper - Éléments surélevés (grandes cartes) */
+.card-upper {
+  background-color: var(--color-bg-upper);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-2); /* 16px mobile */
+}
+
+/* Card Upper Small - Petites cartes (ProcessSection, etc.) */
+.card-upper-sm {
+  background-color: var(--color-bg-upper);
+  border-radius: var(--radius-sm); /* 16px */
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-2); /* 16px toujours */
+}
+
+/* Card Ground - Conteneurs au niveau du sol */
+.card-ground {
+  background-color: var(--color-bg-ground);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--inner-shadow);
+  padding: var(--spacing-2);
+}
+
+/* Card Under - Éléments en creux */
+.card-under {
+  background-color: var(--color-bg-under);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--inner-shadow);
+  padding: var(--spacing-2);
+}
+
+/* Responsive padding - Desktop (grandes cartes) */
+@media (min-width: 768px) {
+  .card-upper,
+  .card-ground,
+  .card-under {
+    padding: var(--spacing-4); /* 32px desktop */
+  }
+
+  /* Les petites cartes gardent 16px même sur desktop */
+  .card-upper-sm {
+    padding: var(--spacing-2); /* 16px toujours */
+  }
+}
+
+/* Responsive border-radius - Mobile */
+@media (max-width: 768px) {
+  .card-upper,
+  .card-ground,
+  .card-under {
+    border-radius: var(--radius-md);
+  }
+}
+
+/* ===================================
+   STYLES DE BASE
+   =================================== */
+
+/* Wrapper V2 - applique les fonts V2 */
+.v2-wrapper {
+  font-family: var(--font-body), sans-serif;
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.v2-wrapper h1,
+.v2-wrapper h2,
+.v2-wrapper h3,
+.v2-wrapper h4,
+.v2-wrapper h5,
+.v2-wrapper h6 {
+  font-family: var(--font-headings), sans-serif;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+/* Tailles de titres par défaut (si pas de classes Tailwind) - Desktop */
+.v2-wrapper h1:not([class*="text-"]) {
+  font-size: 4rem; /* 64px */
+  line-height: 1.1;
+}
+
+.v2-wrapper h2:not([class*="text-"]) {
+  font-size: 2rem; /* 32px */
+  line-height: 1.2;
+}
+
+.v2-wrapper p:not([class*="text-"]) {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .v2-wrapper h1:not([class*="text-"]) {
+    font-size: 3rem; /* 48px */
+  }
+
+  .v2-wrapper h2:not([class*="text-"]) {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  .v2-wrapper p:not([class*="text-"]) {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* ===================================
+   CLASSES UTILITAIRES SUPPLÉMENTAIRES
+   =================================== */
+
+/* Texte muted */
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* Container responsive */
+.container-v2 {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+@media (max-width: 768px) {
+  .container-v2 {
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-2);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+/* Background gradient qui couvre TOUTE la zone y compris safe area iOS */
+body {
+  margin: 0;
+  /* Padding pour pousser le contenu hors de la safe area */
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+           env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  /* Le gradient couvre toute la zone */
+  background: var(--color-bg-gradient);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Désactiver les transitions pendant le chargement */
+.preload * {
+  transition: none !important;
+}
+
+/* ===================================
+   PROCESS CARD HOVER - Now handled by React state in ProcessSection.tsx
+   =================================== */
+/* CSS rules removed - hover logic moved to React component for better control */
