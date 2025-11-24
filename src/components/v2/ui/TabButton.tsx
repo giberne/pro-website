@@ -26,7 +26,7 @@ export default function TabButton({
         borderColor: isActive ? 'var(--color-primary)' : 'transparent',
       }}
       transition={{ duration: 0.2 }}
-      className="w-14 h-14 rounded-[var(--radius-sm)] border-[3px] font-bold flex items-center justify-center text-xl"
+      className="w-14 h-14 rounded-[var(--radius-sm)] border-[3px] font-bold flex items-center justify-center text-2xl"
       style={{
         fontFamily: 'var(--font-chivo-mono)',
         color: isActive ? 'var(--color-primary)' : 'var(--color-muted)',

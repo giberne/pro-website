@@ -27,7 +27,7 @@ export default function ButtonV2({
 
   const variantStyles = {
     primary:
-      'bg-[var(--color-primary)] text-white rounded-[var(--radius-full)] hover:bg-white hover:text-[var(--color-primary)] border-[3px] border-transparent hover:border-[var(--color-primary)]',
+      'text-white rounded-[var(--radius-full)] [background:var(--color-primary-gradient)] hover:[background:white] hover:text-[var(--color-primary)] hover:border-[3px] hover:border-[var(--color-primary)]',
     secondary:
       'bg-[var(--color-foreground)] text-white rounded-[var(--radius-full)] hover:bg-white hover:text-[var(--color-foreground)] border-[3px] border-transparent hover:border-[var(--color-foreground)]',
   }

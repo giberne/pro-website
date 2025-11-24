@@ -3,15 +3,16 @@
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import ButtonV2 from '../ui/ButtonV2'
 import TabButton from '../ui/TabButton'
 import { services } from '@/data/v2/services'
 import { useServicesCarousel } from '@/contexts/ServicesCarouselContext'
+import { useScrollToSection } from '@/hooks/useScrollToSection'
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const { activeTab, setActiveTab, direction, setDirection } = useServicesCarousel()
+  const scrollTo = useScrollToSection()
 
   // Parallax effect: image descend au scroll et se positionne au-dessus de la section Services
   // [0, 1000] = intervalle de scroll (0px → 1000px de scroll)
@@ -119,18 +120,18 @@ export default function HeroSection() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-x-hidden"
       style={{ minHeight: '220vh' }}
     >
       {/* Partie fixe en haut - Titre et CTA - Positionné avec padding-top intelligent */}
-      <div className="min-h-screen pt-[15vh] lg:pt-[20vh]">
+      <div className="min-h-screen" style={{ paddingTop: 'clamp(120px, 20vh, 25vh)' }}>
         <div className="container-v2 z-10 text-center pb-8 sm:pb-0">
         {/* Titre avec stagger animation */}
         <motion.h1
           variants={titleVariants}
           initial="hidden"
           animate="visible"
-          className="text-3xl sm:text-5xl font-bold mb-8 leading-tight mx-auto max-w-3xl"
+          className="text-4xl sm:text-5xl font-black mb-8 leading-tight tracking-tighter mx-auto max-w-3xl"
           style={{ fontFamily: 'var(--font-oxanium-v2)' }}
         >
           {titleWords.map((word, i) => (
@@ -161,20 +162,33 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.0 }}
         >
-          <ButtonV2 href="#contact">Discutons de votre projet</ButtonV2>
+          <motion.a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              scrollTo('#contact')
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="inline-block cursor-pointer text-white rounded-[var(--radius-full)] font-bold [background:var(--color-primary-gradient)] hover:[background:white] hover:text-[var(--color-primary)] hover:border-[3px] hover:border-[var(--color-primary)] shadow-[var(--shadow-primary)] transition-all duration-200 px-6 py-4"
+          >
+            Discutons de votre projet
+          </motion.a>
         </motion.div>
         </div>
       </div>
 
       {/* Container avec image + card positionnées ensemble */}
-      <div className="relative w-full -mt-52 sm:-mt-58 md:-mt-72 z-30">
+      <div className="relative w-full z-30" style={{ marginTop: 'clamp(-12rem, -35vh, -40rem)' }}>
         {/* Carrousel d'images avec parallax - descend au scroll */}
         <motion.div
           style={{
             scale: mockupScale,
             y: mockupY,
+            maxWidth: 'min(80rem, 100vh)',
           }}
-          className="w-full max-w-5xl px-8 md:px-16 z-20 relative mx-auto"
+          className="w-full px-8 md:px-16 z-20 relative mx-auto"
         >
           <motion.div
             className="relative"
@@ -224,12 +238,12 @@ export default function HeroSection() {
                   exit="exit"
                 >
                   <h2
-                    className="text-2xl md:text-[32px] font-bold mb-6"
+                    className="text-xl md:text-[24px] font-bold mb-6"
                     style={{ fontFamily: 'var(--font-oxanium-v2)' }}
                   >
                     {services[activeTab].title}
                   </h2>
-                  <p className="text-base text-[var(--color-muted)] leading-relaxed">
+                  <p className="text-sm md:text-base text-[var(--color-muted)] leading-relaxed">
                     {services[activeTab].description}
                   </p>
                 </motion.div>

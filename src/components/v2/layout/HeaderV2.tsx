@@ -5,11 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import ButtonV2 from '../ui/ButtonV2'
+import { useScrollToSection } from '@/hooks/useScrollToSection'
 
 export default function HeaderV2() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const scrollTo = useScrollToSection()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,23 +28,14 @@ export default function HeaderV2() {
     { label: 'FAQ', href: '#faq' },
   ]
 
-  const scrollToSection = (
+  const handleScrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
     e.preventDefault()
-    const element = document.querySelector(href)
-    if (element) {
-      const headerOffset = 100 // Offset pour le header sticky
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+    e.stopPropagation()
     setIsMenuOpen(false)
+    scrollTo(href)
   }
 
   return (
@@ -51,7 +43,7 @@ export default function HeaderV2() {
       initial={{ opacity: 0, y: +20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="sticky top-4 z-50 mx-auto max-w-6xl px-4"
+      className="fixed top-4 left-0 right-0 z-[100] mx-auto max-w-6xl px-4"
     >
       <motion.nav
         animate={{
@@ -62,7 +54,7 @@ export default function HeaderV2() {
         className="card-upper flex items-center justify-between backdrop-blur-md !px-4"
       >
         {/* Logo */}
-        <Link href="/v2" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/TCL-favicon.svg"
             alt="The Crystal Lad"
@@ -95,7 +87,7 @@ export default function HeaderV2() {
             <li key={link.href}>
               <a
                 href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
+                onClick={(e) => handleScrollToSection(e, link.href)}
                 className="hover:text-[var(--color-primary)] transition-colors font-medium cursor-pointer"
               >
                 {link.label}
@@ -106,17 +98,17 @@ export default function HeaderV2() {
 
         {/* Desktop CTA Button */}
         <div className="hidden md:block">
-          <ButtonV2
-            variant="secondary"
+          <a
             href="#contact"
-            className={
+            onClick={(e) => handleScrollToSection(e, '#contact')}
+            className={`inline-block cursor-pointer bg-[var(--color-foreground)] text-white rounded-[var(--radius-full)] font-medium hover:bg-white hover:text-[var(--color-foreground)] hover:border-[3px] hover:border-[var(--color-foreground)] transition-all ${
               isScrolled
-                ? '!px-3 !py-1 text-sm transition-all duration-300'
-                : '!px-4 !py-2 transition-all duration-300'
-            }
+                ? 'px-3 py-1 text-sm'
+                : 'px-4 py-2'
+            }`}
           >
             Réserver
-          </ButtonV2>
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -149,7 +141,7 @@ export default function HeaderV2() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      onClick={(e) => scrollToSection(e, link.href)}
+                      onClick={(e) => handleScrollToSection(e, link.href)}
                       className="block py-2 hover:text-[var(--color-primary)] transition-colors font-medium cursor-pointer text-lg"
                     >
                       {link.label}
@@ -158,9 +150,13 @@ export default function HeaderV2() {
                 ))}
               </ul>
               <div className="mt-6">
-                <ButtonV2 variant="secondary" href="#contact" className="w-full">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleScrollToSection(e, '#contact')}
+                  className="block w-full text-center cursor-pointer bg-[var(--color-foreground)] text-white rounded-[var(--radius-full)] font-medium hover:bg-white hover:text-[var(--color-foreground)] hover:border-[3px] hover:border-[var(--color-foreground)] transition-all px-4 py-2"
+                >
                   Réserver
-                </ButtonV2>
+                </a>
               </div>
             </div>
           </motion.div>

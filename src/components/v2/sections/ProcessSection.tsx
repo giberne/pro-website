@@ -101,7 +101,7 @@ function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
         }}
         transition={{ duration: 0.2 }}
       >
-        <div className="flex flex-col items-start text-left">
+        <div className="flex flex-col text-center items-center sm:text-left sm:items-start">
           {/* Icon */}
           <div className="mb-4">
             <IconComponent

@@ -15,10 +15,11 @@
   --color-bg-upper: #FFFFFF;        /* Cartes surélevées */
   --color-bg-ground: #F2F2F2;       /* Fond moyen */
   --color-bg-under: #E6E6E6;        /* Éléments en creux */
-  --color-bg-gradient: linear-gradient(90deg, #E7F1FE, #E7E8FE);
+  --color-bg-gradient: linear-gradient(90deg, #C1EDF6, #D5E7EE, #CDF4E8); /* Gradient de fond */
 
   /* Couleurs sémantiques */
-  --color-primary: #3C87DD;         /* Bleu principal */
+  --color-primary: #5C5EF0;         /* Bleu principal */
+  --color-primary-gradient: linear-gradient(90deg, #4D97CB, #5C5EF0); /* Gradient boutons primary */
   --color-foreground: #0D0D0D;      /* Texte principal / bordures */
   --color-muted: #4D4D4D;           /* Texte secondaire */
 
