@@ -60,8 +60,8 @@ export default function CompleteOfferSection() {
           >
             <CardV2 variant="under" className="!p-4 md:!p-8">
               <h3
-                className="text-xl md:text-2xl font-bold mb-6 text-center"
-                style={{ fontFamily: 'var(--font-oxanium-v2)' }}
+                className="text-lg md:text-xl font-bold mb-6 text-center"
+                style={{ fontFamily: 'var(--font-poppin-v2)' }}
               >
                 Inclus :
               </h3>
@@ -71,11 +71,13 @@ export default function CompleteOfferSection() {
                   <motion.div
                     key={item.id}
                     variants={itemVariants}
-                    className="aspect-square"
+                    className="min-h-[100px] md:min-h-[120px]"
                   >
                     <motion.div
                       whileHover={{
                         scale: 1.05,
+                        boxShadow: 'var(--shadow-primary)',
+                        borderRadius: 'var(--radius-sm)',
                         transition: { duration: 0.2 }
                       }}
                       whileTap={{
@@ -84,7 +86,7 @@ export default function CompleteOfferSection() {
                       }}
                       className="h-full cursor-pointer"
                     >
-                      <CardV2 variant="upper" className="!p-4 h-full relative flex items-center justify-center text-center transition-colors duration-200 hover:bg-[var(--color-primary)]/10">
+                      <CardV2 variant="upper-sm" className="!p-2 h-full relative flex items-center justify-center text-center transition-colors duration-200 hover:bg-[var(--color-primary)]/10">
                         {/* Check icon dans le coin supérieur droit */}
                         <motion.div
                           whileHover={{ scale: 1.2, rotate: 5 }}
@@ -98,7 +100,7 @@ export default function CompleteOfferSection() {
                           />
                         </motion.div>
                         {/* Texte centré */}
-                        <span className="text-sm font-medium leading-tight">
+                        <span className="text-sm sm:text-base font-medium leading-tight">
                           {item.label}
                         </span>
                       </CardV2>
@@ -123,8 +125,8 @@ export default function CompleteOfferSection() {
             {/* Card Options */}
             <CardV2 variant="under">
               <h3
-                className="text-lg md:text-xl font-bold mb-6 text-left"
-                style={{ fontFamily: 'var(--font-oxanium-v2)' }}
+                className="text-base md:text-lg font-bold mb-6 text-left"
+                style={{ fontFamily: 'var(--font-poppin-v2)' }}
               >
                 Option disponible :
               </h3>

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 
 interface CardV2Props {
-  variant?: 'upper' | 'ground' | 'under'
+  variant?: 'upper' | 'upper-sm' | 'ground' | 'under'
   children: React.ReactNode
   className?: string
   hoverable?: boolean
@@ -15,19 +15,22 @@ export default function CardV2({
   className = '',
   hoverable = false,
 }: CardV2Props) {
-  const variantClass = {
+  const variantClass: Record<string, string> = {
     upper: 'card-upper',
+    'upper-sm': 'card-upper-sm',
     ground: 'card-ground',
     under: 'card-under',
-  }[variant]
+  }
+
+  const selectedClass = variantClass[variant]
 
   if (!hoverable) {
-    return <div className={`${variantClass} ${className}`}>{children}</div>
+    return <div className={`${selectedClass} ${className}`}>{children}</div>
   }
 
   return (
     <motion.div
-      className={`${variantClass} ${className}`}
+      className={`${selectedClass} ${className}`}
       whileHover={{
         y: -5,
         boxShadow: 'var(--shadow-primary)',

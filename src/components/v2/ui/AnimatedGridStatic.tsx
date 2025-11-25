@@ -1,8 +1,7 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import { useReducedMotion, useLowPerformance } from '@/hooks/useReducedMotion'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 interface GridCell {
   id: string
@@ -15,29 +14,16 @@ interface GridCell {
   animationDuration: number
 }
 
-export default function AnimatedGrid() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollY } = useScroll()
-  const shouldReduceMotion = useReducedMotion()
-  const isLowPerformance = useLowPerformance()
-
-  // Disparition au scroll - la grille fade out et descend légèrement
-  // Optimisation: réduire le nombre d'updates avec throttle implicite
-  const gridOpacity = useTransform(scrollY, [0, 500], [1, 0])
-  const gridY = useTransform(scrollY, [0, 500], [0, 100])
-
-  // Génération de la grille architecturale avec zones d'opacité variables
+export default function AnimatedGridStatic() {
+  const [hoveredCell, setHoveredCell] = useState<string | null>(null)
   const [cells, setCells] = useState<GridCell[]>([])
 
   useEffect(() => {
     const generateGrid = () => {
       const cellsArray: GridCell[] = []
-      // Adapter le nombre de cellules selon les performances
-      // Faible performance: 20x15 = 300 cellules
-      // Performance normale: 40x30 = 1200 cellules
-      const cols = isLowPerformance ? 20 : 40
-      const rows = isLowPerformance ? 15 : 30
-      const cellSize = isLowPerformance ? 60 : 30
+      const cols = 60 // nombre de colonnes (pour carrés 20px)
+      const rows = 45 // nombre de lignes (pour carrés 20px)
+      const cellSize = 20 // taille de base (20x20px)
 
       // Créer des "taches" d'opacité - zones avec opacité plus forte
       const opacityZones = [
@@ -53,7 +39,7 @@ export default function AnimatedGrid() {
           const normY = row / rows
 
           // Calculer l'opacité basée sur la proximité aux zones
-          let opacity = 0.08 // opacité de base réduite (était 0.15)
+          let opacity = 0.08 // opacité de base réduite
 
           opacityZones.forEach(zone => {
             const distance = Math.sqrt(
@@ -62,7 +48,7 @@ export default function AnimatedGrid() {
             if (distance < zone.radius) {
               // Plus proche du centre de la zone = plus opaque
               const factor = 1 - distance / zone.radius
-              opacity = Math.max(opacity, 0.12 + factor * 0.18) // réduit (était 0.2 + 0.3)
+              opacity = Math.max(opacity, 0.12 + factor * 0.18)
             }
           })
 
@@ -87,37 +73,25 @@ export default function AnimatedGrid() {
     }
 
     generateGrid()
-  }, [isLowPerformance])
-
-  // Si l'utilisateur préfère réduire les animations, ne rien afficher
-  if (shouldReduceMotion) {
-    return null
-  }
+  }, [])
 
   return (
-    <motion.div
-      ref={containerRef}
-      className="absolute inset-0 overflow-hidden z-0 will-change-transform"
-      style={{
-        opacity: gridOpacity,
-        y: gridY,
-      }}
-    >
+    <div className="absolute inset-0 overflow-hidden z-0">
       <svg
         className="w-full h-full"
         viewBox="0 0 1200 900"
         preserveAspectRatio="xMidYMid slice"
-        style={{ pointerEvents: 'auto', willChange: 'transform' }}
+        style={{ pointerEvents: 'auto' }}
       >
         <defs>
           {/* Gradient pour les cellules hover */}
-          <radialGradient id="hoverGradient" cx="50%" cy="50%" r="50%">
+          <radialGradient id="hoverGradientStatic" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#666666" stopOpacity="0.4" />
             <stop offset="100%" stopColor="#666666" stopOpacity="0" />
           </radialGradient>
 
           {/* Filtre pour le glow effect */}
-          <filter id="glow">
+          <filter id="glowStatic">
             <feGaussianBlur stdDeviation="2" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
@@ -131,19 +105,21 @@ export default function AnimatedGrid() {
             <GridCellComponent
               key={cell.id}
               cell={cell}
-              onHover={() => {}}
-              onLeave={() => {}}
+              isHovered={hoveredCell === cell.id}
+              onHover={() => setHoveredCell(cell.id)}
+              onLeave={() => setHoveredCell(null)}
             />
           )
         })}
       </svg>
-    </motion.div>
+    </div>
   )
 }
 
 // Composant pour une cellule individuelle
 interface GridCellComponentProps {
   cell: GridCell
+  isHovered: boolean
   onHover: () => void
   onLeave: () => void
 }
@@ -175,13 +151,11 @@ function GridCellComponent({
       whileHover={{
         opacity: Math.min(cell.opacity * 3, 0.6),
         strokeWidth: 1.5,
-        transition: { duration: 0.2 },
       }}
       onPointerEnter={onHover}
       onPointerLeave={onLeave}
       style={{
         pointerEvents: 'all',
-        willChange: 'opacity',
       }}
     />
   )

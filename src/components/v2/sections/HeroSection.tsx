@@ -28,13 +28,13 @@ export default function HeroSection() {
   // [0, 1] = opacity de 0 (invisible) à 1 (visible)
   const cardOpacity = useTransform(scrollY, [200, 600], [0, 1])
 
-  // Tilt effect pour l'image au hover
+  // Tilt effect pour l'image au hover - avec stiffness réduit pour moins de calculs
   const rotateX = useMotionValue(0)
   const rotateY = useMotionValue(0)
 
-  // Smooth spring animations pour le tilt
-  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 })
-  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 })
+  // Smooth spring animations pour le tilt - optimisé pour performance
+  const springRotateX = useSpring(rotateX, { stiffness: 150, damping: 20, restDelta: 0.001 })
+  const springRotateY = useSpring(rotateY, { stiffness: 150, damping: 20, restDelta: 0.001 })
 
   // Handler pour le mouse move
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -215,6 +215,7 @@ export default function HeroSection() {
             }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            transition={{ type: "spring", stiffness: 150, damping: 20 }}
           >
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
@@ -230,8 +231,9 @@ export default function HeroSection() {
                   alt={services[activeTab].title}
                   width={1200}
                   height={800}
-                  className="w-full h-auto shadow-[var(--shadow-md)] rounded-[var(--radius-sm)] sm:rounded-[var(--radius-lg)]"
+                  className="w-full h-auto shadow-[var(--shadow-md)] rounded-[var(--radius-sm)] sm:rounded-[var(--radius-lg)] will-change-transform"
                   priority={activeTab === 0}
+                  loading={activeTab === 0 ? "eager" : "lazy"}
                 />
               </motion.div>
             </AnimatePresence>
@@ -254,7 +256,7 @@ export default function HeroSection() {
                   exit="exit"
                 >
                   <h2
-                    className="text-xl md:text-[24px] font-bold mb-6"
+                    className="text-xl md:text-[24px] text-primary font-bold mb-6"
                     style={{ fontFamily: 'var(--font-oxanium-v2)' }}
                   >
                     {services[activeTab].title}

@@ -125,12 +125,12 @@ function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
           </div>
 
           {/* Title */}
-          <h3
-            className="text-base md:text-lg font-bold"
-            style={{ fontFamily: 'var(--font-oxanium-v2)' }}
+          <p
+            className="text-base md:text-lg font-semibold"
+            style={{ fontFamily: 'var(--font-poppin-v2)' }}
           >
             {step.title}
-          </h3>
+          </p>
 
           {/* Description - Always visible on mobile, hover/click on desktop */}
           <motion.div

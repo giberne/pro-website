@@ -197,6 +197,14 @@
   color: var(--color-muted);
 }
 
+/* Texte avec gradient primary */
+.text-primary {
+  background: var(--color-primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Container responsive */
 .container-v2 {
   width: 100%;
@@ -214,10 +222,17 @@
   }
 }
 
-/* Smooth scroll behavior */
+/* Smooth scroll behavior with performance optimizations */
 html {
   scroll-behavior: smooth;
   height: 100%;
+  /* Force le GPU acceleration pour le scroll */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  /* Améliore le rendu sur mobile */
+  -webkit-overflow-scrolling: touch;
+  /* Désactive le bounce effect sur iOS */
+  overscroll-behavior: none;
 }
 
 /* Background gradient qui couvre TOUTE la zone y compris safe area iOS */
@@ -253,5 +268,41 @@ body {
   }
   50%, 100% {
     opacity: 0;
+  }
+}
+
+/* ===================================
+   PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+/* Optimisation des éléments avec parallax/scroll animations */
+.parallax-container,
+[style*="scale:"],
+[style*="y:"],
+[style*="opacity:"] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Optimisation pour les éléments animés par Framer Motion */
+[data-projection-id] {
+  /* Force le rendu sur le GPU */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Désactive will-change après les animations pour économiser les ressources */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    will-change: auto !important;
   }
 }

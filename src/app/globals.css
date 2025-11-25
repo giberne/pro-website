@@ -117,6 +117,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* Désactive le bounce effect sur iOS */
   overscroll-behavior: none;
+  /* Optimisations pour scroll fluide */
+  scroll-behavior: smooth;
+}
+
+/* Optimisations de performance pour le scrolling */
+html {
+  /* Force le GPU acceleration pour le scroll */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  /* Améliore le rendu sur mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Transitions fluides pour le changement de thème - ciblées pour éviter les conflits */
@@ -178,6 +189,21 @@ html.dark {
 
 html.dark .text-muted {
   color: var(--text-muted-dark);
+}
+
+/* Classe utilitaire pour texte avec gradient primary */
+.text-primary {
+  background: linear-gradient(135deg, #5c5ef0 0%, #8b5cf6 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.dark .text-primary {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Gradients séparés pour la transition par opacité */
@@ -336,5 +362,41 @@ html.dark .calendly-container {
   }
   100% {
     left: 100%;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Optimisation des éléments avec parallax/scroll animations */
+.parallax-container,
+[style*="scale:"],
+[style*="y:"],
+[style*="opacity:"] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Optimisation pour les éléments animés par Framer Motion */
+[data-projection-id] {
+  /* Force le rendu sur le GPU */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Désactive will-change après les animations pour économiser les ressources */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    will-change: auto !important;
   }
 }

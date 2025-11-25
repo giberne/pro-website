@@ -18,7 +18,7 @@ export default function MentionsLegalesPage() {
     <div className="min-h-screen v2-wrapper" style={{ background: 'var(--color-bg-gradient)' }}>
       <HeaderV2 />
 
-      <main className="container-v2 py-12 md:py-20">
+      <main className="container-v2 pt-24 md:pt-32 pb-12 md:pb-20">
         {/* Retour à l'accueil */}
         <Link
           href="/"

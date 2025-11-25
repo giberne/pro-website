@@ -17,17 +17,31 @@ export const metadata: Metadata = {
   },
 
   // --- METADONNÉES PRINCIPALES (SEO) ---
-  title: 'Thomas Giberné | Création de Site Web & Identité de Marque',
-  description: 'Freelance spécialisé en création de site web sur mesure, design d\'interface (UI/UX) et identité de marque. De la stratégie à la mise en ligne, je donne vie à vos projets.',
+  title: 'Thomas Giberné | Création de Sites Web Adaptés à Votre Activité',
+  description: 'Création de sites web modernes sur mesure : sites vitrine, e-commerce légers, applications web. Du design à la mise en ligne, je développe des solutions rapides, responsive et adaptées à vos besoins. À partir de 600€ HT.',
   keywords: [
-  'développeur web freelance',
+    'développeur web freelance',
     'création de site web',
+    'site web sur mesure',
+    'site vitrine',
+    'site e-commerce',
+    'e-commerce',
     'refonte de site',
     'designer web',
     'UI design',
     'UX design',
+    'design personnalisé',
+    'interface personnalisée',
     'Figma',
     'développeur Next.js',
+    'développement rapide',
+    'site responsive',
+    'mobile-first',
+    'responsive design',
+    'CMS',
+    'gestion de contenu',
+    'mise en ligne',
+    'hébergement web',
     'identité de marque',
     'identité visuelle',
     'création de logo',
@@ -35,13 +49,12 @@ export const metadata: Metadata = {
     'direction artistique',
     'portfolio',
     'Thomas Giberné',
-    'finaliser site IA',
-    'améliorer site existant',
-    'aide site web bloqué',
-    'site web lent',
-    'corriger bug site web',
+    'site web professionnel',
+    'site web moderne',
     'optimisation de site web',
-    'rendre site professionnel',
+    'tarif site web',
+    'prix site web',
+    'à partir de 600€',
   ],
   authors: [{ name: 'Thomas Giberné' }],
   creator: 'Thomas Giberné',
@@ -57,15 +70,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://giberne.dev',
-    siteName: 'Thomas Giberné | Design & Développement',
-    title: 'Thomas Giberné | Designer & Développeur - De la vision au produit fini',
-    description: 'Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d\'interface et identités de marque fortes.',
+    siteName: 'Thomas Giberné | Création de Sites Web',
+    title: 'Thomas Giberné | Création de Sites Web Adaptés à Votre Activité',
+    description: 'Création de sites web modernes sur mesure : sites vitrine, e-commerce, applications web. Du design à la mise en ligne. Responsive, rapide et professionnel. À partir de 600€ HT.',
     images: [
       {
         url: '/images/pro-banner.png',
         width: 1200,
         height: 630,
-        alt: 'Thomas Giberné - Création de site web et identité de marque',
+        alt: 'Thomas Giberné - Création de sites web modernes sur mesure',
       },
     ],
   },
@@ -73,8 +86,8 @@ export const metadata: Metadata = {
   // --- TWITTER CARD (Partage sur Twitter) ---
   twitter: {
     card: 'summary_large_image',
-    title: 'Thomas Giberné | Designer & Développeur - De la vision au produit fini',
-    description: 'Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d\'interface et identités de marque fortes.',
+    title: 'Thomas Giberné | Création de Sites Web Adaptés à Votre Activité',
+    description: 'Sites web modernes sur mesure : vitrine, e-commerce, applications web. Design personnalisé, développement rapide, responsive. À partir de 600€ HT.',
     images: ['/images/pro-banner.png'],
     creator: '@akisama_fr',
   },
@@ -110,20 +123,20 @@ export default function RootLayout({
         {/* Open Graph pour les previews réseaux sociaux */}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="fr_FR" />
-        <meta property="og:site_name" content="Thomas Giberné | Design & Développement" />
-        <meta property="og:title" content="Thomas Giberné | Designer & Développeur - De la vision au produit fini" />
-        <meta property="og:description" content="Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d'interface et identités de marque fortes." />
+        <meta property="og:site_name" content="Thomas Giberné | Création de Sites Web" />
+        <meta property="og:title" content="Thomas Giberné | Création de Sites Web Adaptés à Votre Activité" />
+        <meta property="og:description" content="Création de sites web modernes sur mesure : sites vitrine, e-commerce, applications web. Du design à la mise en ligne. Responsive, rapide et professionnel. À partir de 600€ HT." />
         <meta property="og:url" content="https://giberne.dev" />
         <meta property="og:image" content="https://giberne.dev/images/pro-banner.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Thomas Giberné - Création de site web et identité de marque" />
+        <meta property="og:image:alt" content="Thomas Giberné - Création de sites web modernes sur mesure" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@akisama_fr" />
-        <meta name="twitter:title" content="Thomas Giberné | Designer & Développeur - De la vision au produit fini" />
-        <meta name="twitter:description" content="Je transforme vos idées en expériences numériques mémorables : sites web sur mesure, design d'interface et identités de marque fortes." />
+        <meta name="twitter:title" content="Thomas Giberné | Création de Sites Web Adaptés à Votre Activité" />
+        <meta name="twitter:description" content="Sites web modernes sur mesure : vitrine, e-commerce, applications web. Design personnalisé, développement rapide, responsive. À partir de 600€ HT." />
         <meta name="twitter:image" content="https://giberne.dev/images/pro-banner.png" />
 
         {/* Calendly CSS */}
