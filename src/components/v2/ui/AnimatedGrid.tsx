@@ -31,9 +31,9 @@ export default function AnimatedGrid() {
   useEffect(() => {
     const generateGrid = () => {
       const cellsArray: GridCell[] = []
-      const cols = 40 // nombre de colonnes (augmenté pour carrés plus petits)
-      const rows = 30 // nombre de lignes (augmenté pour carrés plus petits)
-      const cellSize = 25 // taille de base (réduite de 40 à 25)
+      const cols = 60 // nombre de colonnes (pour carrés 20px)
+      const rows = 45 // nombre de lignes (pour carrés 20px)
+      const cellSize = 20 // taille de base (20x20px)
 
       // Créer des "taches" d'opacité - zones avec opacité plus forte
       const opacityZones = [

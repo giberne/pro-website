@@ -127,17 +127,17 @@ export default function HeroSection() {
       <AnimatedGrid />
 
       {/* Partie fixe en haut - Titre et CTA - Positionné avec padding-top intelligent */}
-      <div className="min-h-screen relative z-10" style={{ paddingTop: 'clamp(120px, 20vh, 25vh)' }}>
+      <div className="min-h-screen relative z-10" style={{ paddingTop: 'clamp(120px, 25vh, 25vh)' }}>
         <div className="container-v2 text-center pb-8 sm:pb-0">
         {/* Titre avec effet typewriter */}
         <motion.h1
           variants={titleVariants}
           initial="hidden"
           animate="visible"
-          className="text-4xl sm:text-5xl font-black mb-8 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
+          className="text-4xl sm:text-6xl font-black mb-4 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
           style={{ fontFamily: 'var(--font-poppin-v2)', fontWeight: 600 }}
         >
-          <span className="block mb-2">CRÉATION DE SITES WEB</span>
+          <span className="block">CRÉATION DE SITES WEB</span>
           <span className="block">
             POUR{' '}
             <span
@@ -162,7 +162,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-sm md:text-lg text-[var(--color-muted)] mb-12 max-w-xl mx-auto px-4"
+          className="text-sm md:text-lg text-[var(--color-muted)] mb-8 max-w-xl mx-auto px-4"
         >
           Je conçois et développe des solutions web sur mesure, du design à la
           mise en ligne.

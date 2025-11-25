@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import { processSteps } from '@/data/v2/process'
 
 export default function ProcessSection() {
@@ -66,6 +67,7 @@ interface ProcessStepCardProps {
 
 function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const IconComponent = step.icon
 
@@ -83,6 +85,16 @@ function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  // Toggle l'état ouvert/fermé au clic
+  const handleClick = () => {
+    if (!isMobile) {
+      setIsOpen(!isOpen)
+    }
+  }
+
+  // Déterminer si la carte est étendue (ouverte)
+  const isExpanded = isMobile || isHovered || isOpen
+
   return (
     <motion.div
       custom={index}
@@ -92,7 +104,8 @@ function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
       viewport={{ once: true, amount: 0.3 }}
     >
       <motion.div
-        className="card-upper-sm cursor-pointer min-h-[140px]"
+        className="card-upper-sm cursor-pointer min-h-[140px] relative pb-10"
+        onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         animate={{
@@ -119,13 +132,14 @@ function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
             {step.title}
           </h3>
 
-          {/* Description - Always visible on mobile, hover on desktop */}
+          {/* Description - Always visible on mobile, hover/click on desktop */}
           <motion.div
             initial={false}
             animate={{
-              height: isHovered || isMobile ? 'auto' : 0,
-              opacity: isHovered || isMobile ? 1 : 0,
-              marginTop: isHovered || isMobile ? 12 : 0,
+              height: isExpanded ? 'auto' : 0,
+              opacity: isExpanded ? 1 : 0,
+              marginTop: isExpanded ? 12 : 0,
+              paddingBottom: isExpanded ? 16 : 0,
             }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
@@ -135,6 +149,23 @@ function ProcessStepCard({ step, index, stepVariants }: ProcessStepCardProps) {
             </p>
           </motion.div>
         </div>
+
+        {/* Indicateur de flèche - Visible uniquement sur desktop et non-mobile */}
+        {!isMobile && (
+          <motion.div
+            className="absolute bottom-4 right-4"
+            animate={{
+              rotate: isExpanded ? 180 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown
+              size={18}
+              color="var(--color-primary)"
+              strokeWidth={2}
+            />
+          </motion.div>
+        )}
       </motion.div>
     </motion.div>
   )

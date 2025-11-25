@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useScrollToSection } from '@/hooks/useScrollToSection'
@@ -55,13 +54,16 @@ export default function HeaderV2() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/TCL-favicon.svg"
-            alt="The Crystal Lad"
-            width={40}
-            height={40}
+          <div
             className={isScrolled ? 'w-8 h-8' : 'w-12 h-12'}
-            style={{ transition: 'width 0.3s, height 0.3s' }}
+            style={{
+              transition: 'width 0.3s, height 0.3s',
+              background: 'var(--color-primary-gradient)',
+              WebkitMask: 'url(/TCL-favicon.svg) no-repeat center',
+              WebkitMaskSize: 'contain',
+              mask: 'url(/TCL-favicon.svg) no-repeat center',
+              maskSize: 'contain',
+            }}
           />
           <motion.div
             animate={{

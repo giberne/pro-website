@@ -50,7 +50,7 @@ export default function CompleteOfferSection() {
         </motion.div>
 
         {/* Grille avec 2 colonnes séparées */}
-        <div className="grid md:grid-cols-[2fr_1fr] gap-6 mb-12">
+        <div className="grid lg:grid-cols-[2fr_1fr] gap-6 mb-12">
           {/* Colonne Inclus - Card UNDER avec mini-cards UPPER en grid 3x2 */}
           <motion.div
             variants={containerVariants}
@@ -66,7 +66,7 @@ export default function CompleteOfferSection() {
                 Inclus :
               </h3>
               {/* Grid 2 colonnes mobile, 3 colonnes desktop (max) */}
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                 {includedItems.map((item) => (
                   <motion.div
                     key={item.id}
