@@ -134,7 +134,7 @@ export default function HeroSection() {
           variants={titleVariants}
           initial="hidden"
           animate="visible"
-          className="text-3xl sm:text-6xl font-black mb-4 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
+          className="text-3xl sm:text-6xl font-black mb-0 sm:mb-4 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
           style={{ fontFamily: 'var(--font-poppin-v2)', fontWeight: 600 }}
         >
           <span className="block">CRÉATION DE SITES WEB</span>
@@ -196,7 +196,7 @@ export default function HeroSection() {
       </div>
 
       {/* Container avec image + card positionnées ensemble */}
-      <div className="relative w-full z-30" style={{ marginTop: 'clamp(-15rem, -30vh, -30rem)' }}>
+      <div className="relative w-full z-30 mt-[-8rem] md:mt-[10-rem] lg:mt-[-15rem]">
         {/* Carrousel d'images avec parallax - descend au scroll */}
         <motion.div
           style={{
