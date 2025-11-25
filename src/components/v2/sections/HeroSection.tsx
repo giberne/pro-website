@@ -28,12 +28,12 @@ export default function HeroSection() {
   }, [])
 
   // Parallax effect: image descend au scroll et se positionne au-dessus de la section Services
-  // Sur mobile: désactivé pour améliorer les performances
+  // Sur mobile: effet réduit pour meilleures performances
   // [0, 1000] = intervalle de scroll (0px → 1000px de scroll)
   // [1, 0.9] = scale de l'image (1 → 0.9)
-  // [0, 300] = position Y (0px → 300px vers le bas)
-  const mockupScale = useTransform(scrollY, [0, 1000], isMobile ? [1, 1] : [1, 0.9])
-  const mockupY = useTransform(scrollY, [0, 2000], isMobile ? [0, 0] : [0, 600])
+  // [0, 500] = position Y (0px → 500px vers le bas)
+  const mockupScale = useTransform(scrollY, [0, 1000], isMobile ? [1, 0.95] : [1, 0.9])
+  const mockupY = useTransform(scrollY, [0, 2000],[0, 600])
 
   // Animation de la card de texte - apparait APRÈS que l'image a fini de descendre (juste fade in)
   // [800, 1200] = la card apparaît entre 800px et 1200px de scroll
@@ -185,7 +185,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 4.0 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
         >
           <motion.a
             href="#contact"
@@ -212,9 +212,7 @@ export default function HeroSection() {
       <div className="relative w-full z-30 mt-[-10rem] md:mt-[10-rem] lg:mt-[-15rem]">
         {/* Carrousel d'images avec parallax - descend au scroll */}
         <motion.div
-          style={isMobile ? {
-            maxWidth: 'min(80rem, 100vh)',
-          } : {
+          style={{
             scale: mockupScale,
             y: mockupY,
             maxWidth: 'min(80rem, 100vh)',
