@@ -321,3 +321,20 @@ html.dark .inner-highlight {
 html.dark .calendly-container {
   background-color: #020204;
 }
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Animation de brillance pour le bouton CTA */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

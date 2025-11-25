@@ -47,11 +47,11 @@ export default function HeaderV2() {
     >
       <motion.nav
         animate={{
-          paddingTop: isScrolled ? '0.35rem' : '0.5rem',
-          paddingBottom: isScrolled ? '0.35rem' : '0.5rem',
+          paddingTop: isScrolled ? '0.35rem' : '0.7rem',
+          paddingBottom: isScrolled ? '0.35rem' : '0.7rem',
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="card-upper flex items-center justify-between backdrop-blur-md !px-4"
+        className="card-upper flex items-center justify-between backdrop-blur-md !px-4 !rounded-md "
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">

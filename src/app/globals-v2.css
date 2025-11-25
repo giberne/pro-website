@@ -15,10 +15,11 @@
   --color-bg-upper: #FFFFFF;        /* Cartes surélevées */
   --color-bg-ground: #F2F2F2;       /* Fond moyen */
   --color-bg-under: #E6E6E6;        /* Éléments en creux */
-  --color-bg-gradient: linear-gradient(90deg, #C1EDF6, #D5E7EE, #CDF4E8); /* Gradient de fond */
+  --color-bg-gradient: linear-gradient(90deg, #c9dcf4, #cddae8, #cdf4f3); /* Gradient de fond */
 
   /* Couleurs sémantiques */
   --color-primary: #5C5EF0;         /* Bleu principal */
+  --color-secondary: #4D97CB;       /* Bleu secondaire (gradient) */
   --color-primary-gradient: linear-gradient(90deg, #4D97CB, #5C5EF0); /* Gradient boutons primary */
   --color-foreground: #0D0D0D;      /* Texte principal / bordures */
   --color-muted: #4D4D4D;           /* Texte secondaire */
@@ -64,6 +65,7 @@
 @theme inline {
   /* Map des couleurs pour Tailwind */
   --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
   --color-foreground: var(--color-foreground);
   --color-muted: var(--color-muted);
 
@@ -239,3 +241,17 @@ body {
    PROCESS CARD HOVER - Now handled by React state in ProcessSection.tsx
    =================================== */
 /* CSS rules removed - hover logic moved to React component for better control */
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+/* Animation de clignotement pour le curseur typewriter */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}

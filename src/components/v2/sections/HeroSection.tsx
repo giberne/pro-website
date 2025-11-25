@@ -7,6 +7,8 @@ import TabButton from '../ui/TabButton'
 import { services } from '@/data/v2/services'
 import { useServicesCarousel } from '@/contexts/ServicesCarouselContext'
 import { useScrollToSection } from '@/hooks/useScrollToSection'
+import AnimatedGrid from '../ui/AnimatedGrid'
+import TypewriterText from '../ui/TypewriterText'
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -56,26 +58,24 @@ export default function HeroSection() {
     rotateY.set(0)
   }
 
-  // Stagger animation pour les mots du titre
-  const titleWords = 'CRÉATION DE SITES WEB ADAPTÉS À VOTRE ACTIVITÉ'.split(' ')
+  // Mots-clés pour l'effet typewriter
+  const targetKeywords = [
+    'ARTISANS>',
+    'ARTISTES>',
+    'COMMERÇANTS>',
+    'CREATEURS>',
+    'CONSULTANTS>',
+    'E-COMMERCE>',
+  ]
 
   const titleVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.2,
+        duration: 0.6,
+        delay: 0.4,
       },
-    },
-  }
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
     },
   }
 
@@ -123,26 +123,38 @@ export default function HeroSection() {
       className="relative overflow-x-hidden"
       style={{ minHeight: '220vh' }}
     >
+      {/* Grille animée en arrière-plan */}
+      <AnimatedGrid />
+
       {/* Partie fixe en haut - Titre et CTA - Positionné avec padding-top intelligent */}
-      <div className="min-h-screen" style={{ paddingTop: 'clamp(120px, 20vh, 25vh)' }}>
-        <div className="container-v2 z-10 text-center pb-8 sm:pb-0">
-        {/* Titre avec stagger animation */}
+      <div className="min-h-screen relative z-10" style={{ paddingTop: 'clamp(120px, 20vh, 25vh)' }}>
+        <div className="container-v2 text-center pb-8 sm:pb-0">
+        {/* Titre avec effet typewriter */}
         <motion.h1
           variants={titleVariants}
           initial="hidden"
           animate="visible"
-          className="text-4xl sm:text-5xl font-black mb-8 leading-tight tracking-tighter mx-auto max-w-3xl"
-          style={{ fontFamily: 'var(--font-oxanium-v2)' }}
+          className="text-4xl sm:text-5xl font-black mb-8 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
+          style={{ fontFamily: 'var(--font-poppin-v2)', fontWeight: 600 }}
         >
-          {titleWords.map((word, i) => (
-            <motion.span
-              key={i}
-              variants={wordVariants}
-              className="inline-block mr-3"
+          <span className="block mb-2">CRÉATION DE SITES WEB</span>
+          <span className="block">
+            POUR{' '}
+            <span
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]"
+              style={{ fontFamily: 'var(--font-oxanium-v2)', fontWeight: 900 }}
             >
-              {word}
-            </motion.span>
-          ))}
+              &lt;/
+              <span className="inline-block tracking-tighter text-left" style={{ minWidth: '10ch' }}>
+                <TypewriterText
+                  words={targetKeywords}
+                  typingSpeed={120}
+                  deletingSpeed={80}
+                  delayBetweenWords={2000}
+                />
+              </span>
+            </span>
+          </span>
         </motion.h1>
 
         {/* Sous-titre */}
@@ -171,16 +183,20 @@ export default function HeroSection() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="inline-block cursor-pointer text-white rounded-[var(--radius-full)] font-bold [background:var(--color-primary-gradient)] hover:[background:white] hover:text-[var(--color-primary)] hover:border-[3px] hover:border-[var(--color-primary)] shadow-[var(--shadow-primary)] transition-all duration-200 px-6 py-4"
+            className="relative inline-block cursor-pointer text-white rounded-[var(--radius-full)] font-bold [background:var(--color-primary-gradient)] hover:[background:white] hover:text-[var(--color-primary)] hover:border-[3px] hover:border-[var(--color-primary)] shadow-[var(--shadow-primary)] transition-all duration-200 px-6 py-4 overflow-hidden group"
           >
-            Discutons de votre projet
+            {/* Effet de brillance */}
+            <span className="absolute inset-0 w-full h-full">
+              <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shine_3s_ease-in-out_infinite] group-hover:animate-none" />
+            </span>
+            <span className="relative z-10">Discutons de votre projet</span>
           </motion.a>
         </motion.div>
         </div>
       </div>
 
       {/* Container avec image + card positionnées ensemble */}
-      <div className="relative w-full z-30" style={{ marginTop: 'clamp(-12rem, -35vh, -40rem)' }}>
+      <div className="relative w-full z-30" style={{ marginTop: 'clamp(-15rem, -30vh, -30rem)' }}>
         {/* Carrousel d'images avec parallax - descend au scroll */}
         <motion.div
           style={{
