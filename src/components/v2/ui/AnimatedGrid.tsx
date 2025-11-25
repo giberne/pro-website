@@ -20,11 +20,20 @@ export default function AnimatedGrid() {
   const { scrollY } = useScroll()
   const shouldReduceMotion = useReducedMotion()
   const isLowPerformance = useLowPerformance()
+  const [isMobile, setIsMobile] = useState(false)
 
-  // Disparition au scroll - la grille fade out et descend légèrement
-  // Optimisation: réduire le nombre d'updates avec throttle implicite
-  const gridOpacity = useTransform(scrollY, [0, 500], [1, 0])
-  const gridY = useTransform(scrollY, [0, 500], [0, 100])
+  // Détection mobile pour désactiver complètement la grille
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Disparition au scroll - simple fade out sans translation pour meilleures performances
+  const gridOpacity = useTransform(scrollY, [0, 400], [1, 0])
 
   // Génération de la grille architecturale avec zones d'opacité variables
   const [cells, setCells] = useState<GridCell[]>([])
@@ -33,11 +42,12 @@ export default function AnimatedGrid() {
     const generateGrid = () => {
       const cellsArray: GridCell[] = []
       // Adapter le nombre de cellules selon les performances
-      // Faible performance: 20x15 = 300 cellules
-      // Performance normale: 40x30 = 1200 cellules
-      const cols = isLowPerformance ? 20 : 40
-      const rows = isLowPerformance ? 15 : 30
-      const cellSize = isLowPerformance ? 60 : 30
+      // Mobile: 15x10 = 150 cellules (très réduit)
+      // Faible performance: 20x12 = 240 cellules
+      // Performance normale: 40x25 = 1000 cellules
+      const cols = isMobile ? 15 : (isLowPerformance ? 20 : 40)
+      const rows = isMobile ? 10 : (isLowPerformance ? 12 : 25)
+      const cellSize = isMobile ? 80 : (isLowPerformance ? 60 : 30)
 
       // Créer des "taches" d'opacité - zones avec opacité plus forte
       const opacityZones = [
@@ -87,7 +97,7 @@ export default function AnimatedGrid() {
     }
 
     generateGrid()
-  }, [isLowPerformance])
+  }, [isLowPerformance, isMobile])
 
   // Si l'utilisateur préfère réduire les animations, ne rien afficher
   if (shouldReduceMotion) {
@@ -97,42 +107,22 @@ export default function AnimatedGrid() {
   return (
     <motion.div
       ref={containerRef}
-      className="absolute inset-0 overflow-hidden z-0 will-change-transform"
+      className="absolute inset-0 overflow-hidden z-0"
       style={{
         opacity: gridOpacity,
-        y: gridY,
       }}
     >
       <svg
         className="w-full h-full"
         viewBox="0 0 1200 900"
         preserveAspectRatio="xMidYMid slice"
-        style={{ pointerEvents: 'auto', willChange: 'transform' }}
+        style={{ pointerEvents: 'none' }}
       >
-        <defs>
-          {/* Gradient pour les cellules hover */}
-          <radialGradient id="hoverGradient" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#666666" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#666666" stopOpacity="0" />
-          </radialGradient>
-
-          {/* Filtre pour le glow effect */}
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
         {cells.map((cell) => {
           return (
             <GridCellComponent
               key={cell.id}
               cell={cell}
-              onHover={() => {}}
-              onLeave={() => {}}
             />
           )
         })}
@@ -144,14 +134,10 @@ export default function AnimatedGrid() {
 // Composant pour une cellule individuelle
 interface GridCellComponentProps {
   cell: GridCell
-  onHover: () => void
-  onLeave: () => void
 }
 
 function GridCellComponent({
   cell,
-  onHover,
-  onLeave,
 }: GridCellComponentProps) {
   return (
     <motion.rect
@@ -164,24 +150,16 @@ function GridCellComponent({
       strokeWidth={0.5}
       initial={{ opacity: cell.opacity }}
       animate={{
-        opacity: [cell.opacity, cell.opacity * 2.5, cell.opacity],
+        opacity: [cell.opacity, cell.opacity * 1.8, cell.opacity],
       }}
       transition={{
         duration: cell.animationDuration,
         repeat: Infinity,
         delay: cell.animationDelay,
-        ease: 'easeInOut',
+        ease: 'linear',
       }}
-      whileHover={{
-        opacity: Math.min(cell.opacity * 3, 0.6),
-        strokeWidth: 1.5,
-        transition: { duration: 0.2 },
-      }}
-      onPointerEnter={onHover}
-      onPointerLeave={onLeave}
       style={{
-        pointerEvents: 'all',
-        willChange: 'opacity',
+        pointerEvents: 'none',
       }}
     />
   )

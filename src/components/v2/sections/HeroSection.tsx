@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 import TabButton from '../ui/TabButton'
 import { services } from '@/data/v2/services'
@@ -15,13 +15,25 @@ export default function HeroSection() {
   const { scrollY } = useScroll()
   const { activeTab, setActiveTab, direction, setDirection } = useServicesCarousel()
   const scrollTo = useScrollToSection()
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Détection mobile pour désactiver les effets lourds
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Parallax effect: image descend au scroll et se positionne au-dessus de la section Services
+  // Sur mobile: désactivé pour améliorer les performances
   // [0, 1000] = intervalle de scroll (0px → 1000px de scroll)
   // [1, 0.9] = scale de l'image (1 → 0.9)
   // [0, 300] = position Y (0px → 300px vers le bas)
-  const mockupScale = useTransform(scrollY, [0, 1000], [1, 0.9])
-  const mockupY = useTransform(scrollY, [0, 2000], [0, 600])
+  const mockupScale = useTransform(scrollY, [0, 1000], isMobile ? [1, 1] : [1, 0.9])
+  const mockupY = useTransform(scrollY, [0, 2000], isMobile ? [0, 0] : [0, 600])
 
   // Animation de la card de texte - apparait APRÈS que l'image a fini de descendre (juste fade in)
   // [800, 1200] = la card apparaît entre 800px et 1200px de scroll
@@ -85,20 +97,21 @@ export default function HeroSection() {
   }
 
   // Animation slide pour les images
+  // Sur mobile: fade simple sans slide pour meilleures performances
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 100 : -100,
+      x: isMobile ? 0 : (direction > 0 ? 100 : -100),
       opacity: 0,
     }),
     center: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.3 },
+      transition: { duration: isMobile ? 0.2 : 0.3 },
     },
     exit: (direction: number) => ({
-      x: direction > 0 ? -100 : 100,
+      x: isMobile ? 0 : (direction > 0 ? -100 : 100),
       opacity: 0,
-      transition: { duration: 0.3 },
+      transition: { duration: isMobile ? 0.2 : 0.3 },
     }),
   }
 
@@ -172,7 +185,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
+          transition={{ duration: 0.5, delay: 4.0 }}
         >
           <motion.a
             href="#contact"
@@ -187,7 +200,7 @@ export default function HeroSection() {
           >
             {/* Effet de brillance */}
             <span className="absolute inset-0 w-full h-full">
-              <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shine_3s_ease-in-out_infinite] group-hover:animate-none" />
+              <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shine_5s_ease-in-out_infinite] group-hover:animate-none" />
             </span>
             <span className="relative z-10">Discutons de votre projet</span>
           </motion.a>
@@ -196,10 +209,12 @@ export default function HeroSection() {
       </div>
 
       {/* Container avec image + card positionnées ensemble */}
-      <div className="relative w-full z-30 mt-[-8rem] md:mt-[10-rem] lg:mt-[-15rem]">
+      <div className="relative w-full z-30 mt-[-10rem] md:mt-[10-rem] lg:mt-[-15rem]">
         {/* Carrousel d'images avec parallax - descend au scroll */}
         <motion.div
-          style={{
+          style={isMobile ? {
+            maxWidth: 'min(80rem, 100vh)',
+          } : {
             scale: mockupScale,
             y: mockupY,
             maxWidth: 'min(80rem, 100vh)',
@@ -208,13 +223,13 @@ export default function HeroSection() {
         >
           <motion.div
             className="relative"
-            style={{
+            style={isMobile ? {} : {
               rotateX: springRotateX,
               rotateY: springRotateY,
               transformPerspective: 1000,
             }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            onMouseMove={isMobile ? undefined : handleMouseMove}
+            onMouseLeave={isMobile ? undefined : handleMouseLeave}
             transition={{ type: "spring", stiffness: 150, damping: 20 }}
           >
             <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -231,7 +246,7 @@ export default function HeroSection() {
                   alt={services[activeTab].title}
                   width={1200}
                   height={800}
-                  className="w-full h-auto shadow-[var(--shadow-md)] rounded-[var(--radius-sm)] sm:rounded-[var(--radius-lg)] will-change-transform"
+                  className={`w-full h-auto shadow-[var(--shadow-md)] rounded-[var(--radius-sm)] sm:rounded-[var(--radius-lg)] ${isMobile ? '' : 'will-change-transform'}`}
                   priority={activeTab === 0}
                   loading={activeTab === 0 ? "eager" : "lazy"}
                 />
