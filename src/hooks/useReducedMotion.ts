@@ -34,7 +34,6 @@ export function useLowPerformance() {
   useEffect(() => {
     // Détection basique des performances
     const checkPerformance = () => {
-      // @ts-expect-error - navigator.hardwareConcurrency existe mais n'est pas typé partout
       const cores = navigator.hardwareConcurrency || 2
       // @ts-expect-error - navigator.deviceMemory est expérimental
       const memory = navigator.deviceMemory || 4
