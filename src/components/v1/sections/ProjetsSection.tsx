@@ -1,7 +1,7 @@
 'use client'
 
-import SectionTitle from '@/components/ui/SectionTitle'
-import ProjectCardModal from '@/components/ui/ProjectCardModal'
+import SectionTitle from '@/components/v1/ui/SectionTitle'
+import ProjectCardModal from '@/components/v1/ui/ProjectCardModal'
 
 export default function ProjetsSection() {
   const projects = [

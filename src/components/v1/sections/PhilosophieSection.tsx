@@ -1,8 +1,8 @@
 'use client'
 
-import SectionTitle from '@/components/ui/SectionTitle'
-import CircleIcon from '@/components/ui/CircleIcon'
-import ScrollToCalendlyButton from '@/components/ui/ScrollToCalendlyButton'
+import SectionTitle from '@/components/v1/ui/SectionTitle'
+import CircleIcon from '@/components/v1/ui/CircleIcon'
+import ScrollToCalendlyButton from '@/components/v1/ui/ScrollToCalendlyButton'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 

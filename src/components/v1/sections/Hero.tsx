@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { ThemeToggle } from '@/components/v1/ui/ThemeToggle'
 import { useRef } from 'react'
 import Image from 'next/image'
 

@@ -1,7 +1,7 @@
 'use client'
 
-import SectionTitle from '@/components/ui/SectionTitle'
-import CalendlyInline from '@/components/ui/CalendlyInline'
+import SectionTitle from '@/components/v1/ui/SectionTitle'
+import CalendlyInline from '@/components/v1/ui/CalendlyInline'
 
 export default function CalendlySection() {
   return (

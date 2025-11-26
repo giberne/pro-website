@@ -1,7 +1,7 @@
 'use client'
 
-import SectionTitle from '@/components/ui/SectionTitle'
-import ScrollToCalendlyButton from '@/components/ui/ScrollToCalendlyButton'
+import SectionTitle from '@/components/v1/ui/SectionTitle'
+import ScrollToCalendlyButton from '@/components/v1/ui/ScrollToCalendlyButton'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'

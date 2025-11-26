@@ -1,5 +1,5 @@
-import SectionTitle from '@/components/ui/SectionTitle'
-import ServiceCardModal from '@/components/ui/ServiceCardModal'
+import SectionTitle from '@/components/v1/ui/SectionTitle'
+import ServiceCardModal from '@/components/v1/ui/ServiceCardModal'
 
 const services = [
   {

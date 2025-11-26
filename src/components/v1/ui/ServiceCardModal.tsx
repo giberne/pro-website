@@ -4,8 +4,8 @@ import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useState, useRef, useEffect } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useModal } from '@/contexts/ModalContext'
-import RichText from '@/components/ui/RichText'
-import ScrollToCalendlyButton from '@/components/ui/ScrollToCalendlyButton'
+import RichText from '@/components/v1/ui/RichText'
+import ScrollToCalendlyButton from '@/components/v1/ui/ScrollToCalendlyButton'
 
 interface ServiceSection {
   content: string
