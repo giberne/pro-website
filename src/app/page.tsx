@@ -11,7 +11,7 @@ import { ServicesCarouselProvider } from '@/contexts/ServicesCarouselContext'
 export default function Home() {
   return (
     <ServicesCarouselProvider>
-      <div className="min-h-screen v2-wrapper" style={{ background: 'var(--color-bg-gradient)' }}>
+      <div className="min-h-screen v2-wrapper">
         <HeaderV2 />
 
         <main>

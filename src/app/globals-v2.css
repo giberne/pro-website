@@ -235,16 +235,26 @@ html {
   overscroll-behavior: none;
 }
 
-/* Background gradient qui couvre TOUTE la zone y compris safe area iOS */
+/* Reset complet pour éviter les marges iOS - surcharge globals.css */
+/* Solution pour Safari iOS : mettre le background sur html ET body */
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  /* Background sur html pour Safari iOS */
+  background: var(--color-bg-gradient) !important;
+}
+
 body {
-  margin: 0;
-  /* Padding pour pousser le contenu hors de la safe area */
-  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
-           env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
-  /* Le gradient couvre toute la zone */
-  background: var(--color-bg-gradient);
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  /* Background aussi sur body */
+  background: var(--color-bg-gradient) !important;
 }
 
 /* Désactiver les transitions pendant le chargement */
