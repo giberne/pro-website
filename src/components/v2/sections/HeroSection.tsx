@@ -9,6 +9,7 @@ import { useServicesCarousel } from '@/contexts/ServicesCarouselContext'
 import { useScrollToSection } from '@/hooks/useScrollToSection'
 import AnimatedGrid from '../ui/AnimatedGrid'
 import TypewriterText from '../ui/TypewriterText'
+import BlurWaveText from '../ui/BlurWaveText'
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -75,21 +76,11 @@ export default function HeroSection() {
     'ARTISANS>',
     'ARTISTES>',
     'COMMERÇANTS>',
-    'CREATEURS>',
+    'ENTREPRENEURS>',
     'CONSULTANTS>',
-    'E-COMMERCE>',
+    'ENTREPRISES>',
   ]
 
-  const titleVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        delay: 0.4,
-      },
-    },
-  }
 
   const handleTabChange = (newIndex: number) => {
     setDirection(newIndex > activeTab ? 1 : -1)
@@ -142,18 +133,27 @@ export default function HeroSection() {
       {/* Partie fixe en haut - Titre et CTA - Positionné avec padding-top intelligent */}
       <div className="min-h-screen relative z-10" style={{ paddingTop: 'clamp(120px, 25vh, 25vh)' }}>
         <div className="container-v2 text-center pb-8 sm:pb-0">
-        {/* Titre avec effet typewriter */}
+        {/* Titre avec effet blur wave */}
         <motion.h1
-          variants={titleVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-3xl sm:text-6xl font-black mb-0 sm:mb-4 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
+          className="text-3xl sm:text-6xl font-black mb-0 sm:mb-8 leading-tight tracking-tight mx-auto max-w-3xl min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
           style={{ fontFamily: 'var(--font-poppin-v2)', fontWeight: 600 }}
         >
-          <span className="block">CRÉATION DE SITES WEB</span>
+          <BlurWaveText
+            text="CRÉATION DE SITES WEB"
+            className="block"
+            delay={1.1}
+            staggerDelay={0.1}
+          />
           <span className="block">
-            POUR{' '}
-            <span
+            <BlurWaveText
+              text="POUR"
+              delay={1.7}
+              staggerDelay={0.1}
+            />{''}
+            <motion.span
+              initial={{ opacity: 0, filter: 'blur(10px)', y: 10 }}
+              animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              transition={{ duration: 0.5, delay: 1.75, ease: [0.25, 0.1, 0.25, 1] }}
               className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]"
               style={{ fontFamily: 'var(--font-oxanium-v2)', fontWeight: 900 }}
             >
@@ -166,15 +166,15 @@ export default function HeroSection() {
                   delayBetweenWords={2000}
                 />
               </span>
-            </span>
+            </motion.span>
           </span>
         </motion.h1>
 
         {/* Sous-titre */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="text-sm md:text-lg text-[var(--color-muted)] mb-8 max-w-xl mx-auto px-4"
         >
           Je conçois et développe des solutions web sur mesure, du design à la
@@ -183,9 +183,9 @@ export default function HeroSection() {
 
         {/* CTA Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
           <motion.a
             href="#contact"
@@ -211,25 +211,32 @@ export default function HeroSection() {
       {/* Container avec image + card positionnées ensemble */}
       <div className="relative w-full z-30 mt-[-10rem] md:mt-[10-rem] lg:mt-[-15rem]">
         {/* Carrousel d'images avec parallax - descend au scroll */}
+        {/* Wrapper pour animation initiale (scale + blur) */}
         <motion.div
-          style={{
-            scale: mockupScale,
-            y: mockupY,
-            maxWidth: 'min(80rem, 100vh)',
-          }}
+          initial={{ opacity: 0, scale: 0.9, filter: 'blur(16px)', y: 100 }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)', y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="w-full px-8 md:px-16 z-20 relative mx-auto"
         >
+          {/* Wrapper pour parallax au scroll */}
           <motion.div
-            className="relative"
-            style={isMobile ? {} : {
-              rotateX: springRotateX,
-              rotateY: springRotateY,
-              transformPerspective: 1000,
+            style={{
+              scale: mockupScale,
+              y: mockupY,
+              maxWidth: 'min(80rem, 100vh)',
             }}
-            onMouseMove={isMobile ? undefined : handleMouseMove}
-            onMouseLeave={isMobile ? undefined : handleMouseLeave}
-            transition={{ type: "spring", stiffness: 150, damping: 20 }}
           >
+            <motion.div
+              className="relative"
+              style={isMobile ? {} : {
+                rotateX: springRotateX,
+                rotateY: springRotateY,
+                transformPerspective: 1000,
+              }}
+              onMouseMove={isMobile ? undefined : handleMouseMove}
+              onMouseLeave={isMobile ? undefined : handleMouseLeave}
+              transition={{ type: "spring", stiffness: 150, damping: 20 }}
+            >
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={activeTab}
@@ -298,6 +305,7 @@ export default function HeroSection() {
                 {index + 1}
               </TabButton>
             ))}
+          </motion.div>
           </motion.div>
         </motion.div>
       </div>

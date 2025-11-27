@@ -8,6 +8,7 @@ interface TypewriterTextProps {
   deletingSpeed?: number
   delayBetweenWords?: number
   className?: string
+  onComplete?: () => void
 }
 
 export default function TypewriterText({
@@ -16,10 +17,12 @@ export default function TypewriterText({
   deletingSpeed = 100,
   delayBetweenWords = 2000,
   className = '',
+  onComplete,
 }: TypewriterTextProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
+  const [hasCalledComplete, setHasCalledComplete] = useState(false)
 
   useEffect(() => {
     const currentWord = words[currentWordIndex]
@@ -50,6 +53,21 @@ export default function TypewriterText({
 
     return () => clearTimeout(timeout)
   }, [currentText, isDeleting, currentWordIndex, words, typingSpeed, deletingSpeed, delayBetweenWords])
+
+  // Appeler onComplete quand le premier mot est complètement tapé
+  useEffect(() => {
+    const currentWord = words[currentWordIndex]
+    if (
+      !hasCalledComplete &&
+      !isDeleting &&
+      currentText.length === currentWord.length &&
+      currentWordIndex === 0 &&
+      onComplete
+    ) {
+      setHasCalledComplete(true)
+      onComplete()
+    }
+  }, [currentText, isDeleting, currentWordIndex, hasCalledComplete, onComplete, words])
 
   return (
     <span className={className}>
