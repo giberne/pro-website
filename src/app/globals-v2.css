@@ -226,9 +226,6 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
-  /* Force le GPU acceleration pour le scroll */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   /* Améliore le rendu sur mobile */
   -webkit-overflow-scrolling: touch;
   /* Désactive le bounce effect sur iOS */

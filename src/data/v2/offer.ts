@@ -7,32 +7,32 @@ export interface OfferItem {
 export const includedItems: OfferItem[] = [
   {
     id: 1,
-     label: 'Design d\'interface',
+    label: 'Design d\'interface personnalisé',
     icon: 'check',
   },
   {
     id: 2,
-    label: 'Développement rapide ',
+    label: 'Développement moderne & rapide',
     icon: 'check',
   },
   {
     id: 3,
-    label: 'Mobile-first',
+    label: 'Responsive & Mobile-First',
     icon: 'check',
   },
   {
     id: 4,
-    label: 'Intégration de vos contenus',
+    label: 'Intégration de contenu',
     icon: 'check',
   },
   {
     id: 5,
-    label: 'Mise en ligne professionnelle',
+    label: 'Déploiement & mise en ligne',
     icon: 'check',
   },
   {
     id: 6,
-    label: 'Formation à l\'outil',
+    label: 'Formation & support',
     icon: 'check',
   },
 ]
@@ -40,27 +40,27 @@ export const includedItems: OfferItem[] = [
 export const optionalItems: OfferItem[] = [
   {
     id: 1,
-    label: 'CMS - Gérez votre contenu',
+    label: 'CMS - Gestion de contenu autonome',
     icon: 'plus',
   },
   {
     id: 2,
-    label: 'CRM - Gérez vos clients',
+    label: 'CRM - Gestion des contacts et clients',
     icon: 'plus',
   },
   {
     id: 3,
-    label: 'Fonctions avancées / E-commerce',
+    label: 'Fonctionnalités avancées sur mesure',
     icon: 'plus',
   },
   {
     id: 4,
-    label: 'Rédaction SEO',
+    label: 'Rédaction SEO professionnelle',
     icon: 'plus',
   },
   {
     id: 5,
-    label: 'Identité visuelle (logo + palette)',
+    label: 'Identité visuelle & branding',
     icon: 'plus',
   },
 ]
@@ -68,7 +68,7 @@ export const optionalItems: OfferItem[] = [
 export const offerContent = {
   title: 'Une Offre Complète',
   subtitle:
-    'Création de Site Web Professionnel : design, développement, gestion du contenu et mise en ligne.',
-  price: 'Gratuit',
-  cta: 'Discutons de votre projet',
+    'Création de Site Web Professionnel : design personnalisé, développement moderne, gestion du contenu et mise en ligne.',
+  price: 'À partir de 800€ HT',
+  cta: 'Discutons de ton projet',
 }

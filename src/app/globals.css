@@ -123,9 +123,6 @@ body {
 
 /* Optimisations de performance pour le scrolling */
 html {
-  /* Force le GPU acceleration pour le scroll */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   /* Améliore le rendu sur mobile */
   -webkit-overflow-scrolling: touch;
 }

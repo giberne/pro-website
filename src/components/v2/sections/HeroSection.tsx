@@ -209,7 +209,7 @@ export default function HeroSection() {
       </div>
 
       {/* Container avec image + card positionnées ensemble */}
-      <div className="relative w-full z-30 mt-[-10rem] md:mt-[10-rem] lg:mt-[-15rem]">
+      <div className="relative w-full z-30 mt-[-10rem] md:mt-[-10rem] lg:mt-[-15rem]">
         {/* Carrousel d'images avec parallax - descend au scroll */}
         {/* Wrapper pour animation initiale (scale + blur) */}
         <motion.div
@@ -220,6 +220,7 @@ export default function HeroSection() {
         >
           {/* Wrapper pour parallax au scroll */}
           <motion.div
+            className="mx-auto"
             style={{
               scale: mockupScale,
               y: mockupY,

@@ -17,44 +17,88 @@ export const metadata: Metadata = {
   },
 
   // --- METADONNÉES PRINCIPALES (SEO) ---
-  title: 'Thomas Giberné | Création de Sites Web Adaptés à Votre Activité',
-  description: 'Création de sites web modernes sur mesure : sites vitrine, e-commerce légers, applications web. Du design à la mise en ligne, je développe des solutions rapides, responsive et adaptées à vos besoins. À partir de 600€ HT.',
+  title: 'Thomas Giberné | Communication Digitale & Sites Web Propulsés par l\'IA',
+  description: 'Créez une présence en ligne impactante grâce à l\'IA. Sites web modernes, identité visuelle, stratégie digitale pour artisans, commerçants et entrepreneurs. Design innovant, développement rapide. À partir de 800€ HT.',
   keywords: [
-    'développeur web freelance',
-    'création de site web',
+    // Core Business - Communication Digitale
+    'communication digitale',
+    'présence digitale',
+    'présence en ligne',
+    'lancement digital',
+
+    // IA Focus
+    'site web IA',
+    'création site web intelligence artificielle',
+    'design web IA',
+    'site web assisté IA',
+    'développement web IA',
+
+    // Services
+    'création site web',
+    'développement web',
     'site web sur mesure',
+    'site web moderne',
+    'site web professionnel',
+    'développeur web freelance',
+
+    // Types de Sites
     'site vitrine',
-    'site e-commerce',
-    'e-commerce',
-    'refonte de site',
-    'designer web',
+    'portfolio en ligne',
+    'site e-commerce léger',
+    'landing page',
+    'site corporate',
+
+    // Public Cible
+    'site web artisan',
+    'site web commerçant',
+    'site web artiste',
+    'site web entrepreneur',
+    'site web consultant',
+    'site web TPE PME',
+    'site web freelance',
+    'site web photographe',
+
+    // Design & Branding
+    'identité visuelle',
+    'branding digital',
+    'logo professionnel',
+    'charte graphique',
+    'design d\'interface',
     'UI design',
     'UX design',
-    'design personnalisé',
-    'interface personnalisée',
-    'Figma',
-    'développeur Next.js',
-    'développement rapide',
+
+    // Technologies
+    'développement Next.js',
     'site responsive',
     'mobile-first',
-    'responsive design',
-    'CMS',
-    'gestion de contenu',
-    'mise en ligne',
-    'hébergement web',
-    'identité de marque',
-    'identité visuelle',
-    'création de logo',
-    'charte graphique',
-    'direction artistique',
-    'portfolio',
-    'Thomas Giberné',
-    'site web professionnel',
-    'site web moderne',
-    'optimisation de site web',
+    'site web rapide',
+    'optimisation performance',
+
+    // Services Additionnels
+    'intégration CMS',
+    'CRM web',
+    'gestion contenu',
+    'formation site web',
+    'accompagnement digital',
+
+    // SEO & Performance
+    'référencement naturel',
+    'optimisation SEO',
+    'site web optimisé',
+
+    // Prix & Délais
     'tarif site web',
     'prix site web',
-    'à partir de 600€',
+    'à partir de 800€',
+    'site web abordable',
+    'création rapide site web',
+
+    // Localisation
+    'développeur web France',
+
+    // Nom
+    'Thomas Giberné',
+    'giberne.dev',
   ],
   authors: [{ name: 'Thomas Giberné' }],
   creator: 'Thomas Giberné',
@@ -70,15 +114,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://giberne.dev',
-    siteName: 'Thomas Giberné | Création de Sites Web',
-    title: 'Thomas Giberné | Création de Sites Web Adaptés à Votre Activité',
-    description: 'Création de sites web modernes sur mesure : sites vitrine, e-commerce, applications web. Du design à la mise en ligne. Responsive, rapide et professionnel. À partir de 600€ HT.',
+    siteName: 'Thomas Giberné - Communication Digitale',
+    title: 'Créez une Présence en Ligne Impactante grâce à l\'IA',
+    description: 'Sites web modernes créés avec l\'intelligence artificielle. Design sur mesure, développement rapide, accompagnement complet pour artisans, commerçants et entrepreneurs. Dès 800€.',
     images: [
       {
         url: '/images/pro-banner.png',
         width: 1200,
         height: 630,
-        alt: 'Thomas Giberné - Création de sites web modernes sur mesure',
+        alt: 'Thomas Giberné - Communication Digitale avec IA',
       },
     ],
   },
@@ -86,8 +130,8 @@ export const metadata: Metadata = {
   // --- TWITTER CARD (Partage sur Twitter) ---
   twitter: {
     card: 'summary_large_image',
-    title: 'Thomas Giberné | Création de Sites Web Adaptés à Votre Activité',
-    description: 'Sites web modernes sur mesure : vitrine, e-commerce, applications web. Design personnalisé, développement rapide, responsive. À partir de 600€ HT.',
+    title: 'Créez une Présence en Ligne Impactante grâce à l\'IA',
+    description: 'Sites web modernes créés avec l\'IA. Design sur mesure, développement rapide, accompagnement complet. Dès 800€.',
     images: ['/images/pro-banner.png'],
     creator: '@akisama_fr',
   },
@@ -122,20 +166,20 @@ export default function RootLayout({
         {/* Open Graph pour les previews réseaux sociaux */}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="fr_FR" />
-        <meta property="og:site_name" content="Thomas Giberné | Création de Sites Web" />
-        <meta property="og:title" content="Thomas Giberné | Création de Sites Web Adaptés à Votre Activité" />
-        <meta property="og:description" content="Création de sites web modernes sur mesure : sites vitrine, e-commerce, applications web. Du design à la mise en ligne. Responsive, rapide et professionnel. À partir de 600€ HT." />
+        <meta property="og:site_name" content="Thomas Giberné - Communication Digitale" />
+        <meta property="og:title" content="Créez une Présence en Ligne Impactante grâce à l'IA" />
+        <meta property="og:description" content="Sites web modernes créés avec l'intelligence artificielle. Design sur mesure, développement rapide, accompagnement complet pour artisans, commerçants et entrepreneurs. Dès 800€." />
         <meta property="og:url" content="https://giberne.dev" />
         <meta property="og:image" content="https://giberne.dev/images/pro-banner.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Thomas Giberné - Création de sites web modernes sur mesure" />
+        <meta property="og:image:alt" content="Thomas Giberné - Communication Digitale avec IA" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@akisama_fr" />
-        <meta name="twitter:title" content="Thomas Giberné | Création de Sites Web Adaptés à Votre Activité" />
-        <meta name="twitter:description" content="Sites web modernes sur mesure : vitrine, e-commerce, applications web. Design personnalisé, développement rapide, responsive. À partir de 600€ HT." />
+        <meta name="twitter:title" content="Créez une Présence en Ligne Impactante grâce à l'IA" />
+        <meta name="twitter:description" content="Sites web modernes créés avec l'IA. Design sur mesure, développement rapide, accompagnement complet. Dès 800€." />
         <meta name="twitter:image" content="https://giberne.dev/images/pro-banner.png" />
 
         {/* Calendly CSS */}

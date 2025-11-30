@@ -38,13 +38,15 @@ export default function HeaderV2() {
   }
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-[100] mx-auto max-w-6xl px-4">
-      <motion.div
-        initial={{ opacity: 0, y: -120 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
-        <motion.nav
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="sticky top-0 left-0 right-0 z-[100] w-full"
+    >
+      <div className="mx-auto max-w-6xl px-4 pt-4">
+        <div>
+          <motion.nav
           animate={{
             paddingTop: isScrolled ? '0.35rem' : '0.7rem',
             paddingBottom: isScrolled ? '0.35rem' : '0.7rem',
@@ -164,7 +166,8 @@ export default function HeaderV2() {
           </motion.div>
         )}
       </AnimatePresence>
-      </motion.div>
-    </header>
+        </div>
+      </div>
+    </motion.header>
   )
 }
