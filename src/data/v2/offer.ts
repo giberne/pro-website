@@ -55,12 +55,12 @@ export const optionalItems: OfferItem[] = [
   },
   {
     id: 4,
-    label: 'Rédaction SEO professionnelle',
+    label: 'Optimisation SEO professionnelle',
     icon: 'plus',
   },
   {
     id: 5,
-    label: 'Identité visuelle & branding',
+    label: 'Identité visuelle & branding complet',
     icon: 'plus',
   },
 ]
@@ -69,6 +69,6 @@ export const offerContent = {
   title: 'Une Offre Complète',
   subtitle:
     'Création de Site Web Professionnel : design personnalisé, développement moderne, gestion du contenu et mise en ligne.',
-  price: 'À partir de 800€ HT',
-  cta: 'Discutons de ton projet',
+  price: 'Gratuit',
+  cta: 'Discutons de votre projet',
 }

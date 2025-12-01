@@ -137,7 +137,7 @@ export default function HeaderV2() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden mt-2"
+            className="md:hidden mt-2"
           >
             <div className="card-upper backdrop-blur-md bg-white/90 !p-6">
               <ul className="flex flex-col gap-4">

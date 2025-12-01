@@ -10,21 +10,21 @@ export const services: Service[] = [
     id: 1,
     title: 'Sites web modernes sur mesure',
     description:
-      'Sites vitrine et e-commerce légers, conçus avec l\'IA pour un design innovant et un développement rapide. Adaptés à ton activité, responsive, et optimisés pour convertir.',
+      'Sites vitrine ou e-commerce, avec un design innovant et un développement rapide. Adaptés à ton activité, responsive, et optimisés pour convertir.',
     image: '/mockup-minimal.png',
   },
-  {
+   {
     id: 2,
-    title: 'Identité visuelle & branding digital',
+    title: 'Gestion de Contenu & Outils Professionnels',
     description:
-      'Logo, charte graphique, et design d\'interface pour une identité unique et moderne. Ton projet mérite une image qui se démarque.',
+      'J\'intègre des CMS et CRM simples permettant de gérer vos pages, vos contenus et vos contacts en totale autonomie.',
     image: '/cms-minimal.png',
   },
   {
     id: 3,
-    title: 'Gestion de contenu & outils pros',
+    title: 'Déploiement, Hébergement & Optimisation',
     description:
-      'Intégration de CMS et CRM simples pour gérer ton site en autonomie : pages, contenu, contacts. Formation incluse pour que tu puisses tout gérer toi-même après le lancement.',
+      'Je m\'occupe du déploiement complet avec une optimisation des performances, de la sécurité et du référencement.',
     image: '/deploy-minimal.png',
   },
 ]

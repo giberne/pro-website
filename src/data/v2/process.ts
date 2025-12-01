@@ -12,28 +12,28 @@ export const processSteps: ProcessStep[] = [
     id: 1,
     title: 'Appel découverte',
     description:
-      'On échange sur ton projet pour comprendre tes besoins, ta vision, et tes objectifs.',
+      'Nous définissons ensemble vos objectifs, votre univers et les fonctionnalités de votre futur site.',
     icon: Phone,
   },
   {
     id: 2,
     title: 'Design & maquette',
     description:
-      'Création de l\'identité visuelle et des maquettes de ton site pour un résultat unique et moderne.',
+      'Je crée une maquette adaptée à votre demande, avec possibilité de retouches avant validation.',
     icon: Palette,
   },
   {
     id: 3,
-    title: 'Développement',
+    title: 'Développement & intégration',
     description:
-      'Développement rapide avec les technologies modernes. Code propre, performant, et optimisé pour tous les appareils.',
+      'Je développe avec des technologies modernes, performantes et optimisées pour mobile.',
     icon: Wrench,
   },
   {
     id: 4,
     title: 'Mise en ligne',
     description:
-      'Déploiement sur ton hébergement, configuration du nom de domaine, et formation complète pour gérer ton site en autonomie.',
+      'Le site est déployé sur un hébergeur optimisé et je vous apprend à gérer votre contenu en toute autonomie.',
     icon: Send,
   },
 ]
