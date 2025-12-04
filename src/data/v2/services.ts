@@ -10,7 +10,7 @@ export const services: Service[] = [
     id: 1,
     title: 'Sites web modernes sur mesure',
     description:
-      'Sites vitrine ou e-commerce, avec un design innovant et un développement rapide. Adaptés à ton activité, responsive, et optimisés pour convertir.',
+      'Sites vitrine ou e-commerce, avec un design innovant et un développement rapide. Adaptés à votre activité, responsive, et optimisés pour convertir.',
     image: '/mockup-minimal.png',
   },
    {

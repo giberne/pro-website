@@ -138,7 +138,7 @@ export const metadata: Metadata = {
 
   // --- ROBOTS (Instructions pour Google et les autres moteurs de recherche) ---
   robots: {
-    index: true,        // ✅ Google PEUT référencer ton site
+    index: true,        // ✅ Google PEUT référencer votre site
     follow: true,       // ✅ Google PEUT suivre tous les liens
     googleBot: {
       index: true,

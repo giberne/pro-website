@@ -5,12 +5,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: baseUrl,               // Ta page d'accueil
+      url: baseUrl,               // Votre page d'accueil
       lastModified: new Date(),   // Date de dernière modification
       changeFrequency: 'monthly', // Elle change tous les mois
       priority: 1,                // Priorité max (1 = le plus important)
     },
-    // 📝 Si tu as d'autres pages, ajoute-les ici !
+    // 📝 Si vous avez d'autres pages, ajoutez-les ici !
     // Exemple pour une page "projets" :
     // {
     //   url: `${baseUrl}/projets`,
