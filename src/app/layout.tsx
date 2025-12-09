@@ -17,36 +17,35 @@ export const metadata: Metadata = {
   },
 
   // --- METADONNÉES PRINCIPALES (SEO) ---
-  title: 'Thomas Giberné | Communication Digitale & Sites Web Propulsés par l\'IA',
-  description: 'Créez une présence en ligne impactante grâce à l\'IA. Sites web modernes, identité visuelle, stratégie digitale pour artisans, commerçants et entrepreneurs. Design innovant, développement rapide. À partir de 800€ HT.',
+  title: 'The Crystal Lad | Création de Sites Web pour Artisans, Artistes & Entrepreneurs',
+  description: 'Studio web spécialisé dans la création de sites modernes sur mesure. Design personnalisé, développement performant, CMS/CRM intégrés. Du design à la mise en ligne, solutions complètes pour artisans, commerçants, artistes et consultants.',
   keywords: [
-    // Core Business - Communication Digitale
-    'communication digitale',
-    'présence digitale',
-    'présence en ligne',
-    'lancement digital',
+    // Nom du Studio
+    'The Crystal Lad',
+    'studio web',
+    'agence web freelance',
 
-    // IA Focus
-    'site web IA',
-    'création site web intelligence artificielle',
-    'design web IA',
-    'site web assisté IA',
-    'développement web IA',
-
-    // Services
+    // Core Business
     'création site web',
     'développement web',
     'site web sur mesure',
     'site web moderne',
     'site web professionnel',
-    'développeur web freelance',
+
+    // Services Principaux
+    'design web personnalisé',
+    'développement Next.js',
+    'intégration CMS',
+    'CRM web',
+    'gestion de contenu',
+    'hébergement web',
+    'déploiement site web',
 
     // Types de Sites
     'site vitrine',
-    'portfolio en ligne',
-    'site e-commerce léger',
+    'portfolio professionnel',
+    'site e-commerce',
     'landing page',
-    'site corporate',
 
     // Public Cible
     'site web artisan',
@@ -55,49 +54,29 @@ export const metadata: Metadata = {
     'site web entrepreneur',
     'site web consultant',
     'site web TPE PME',
-    'site web freelance',
-    'site web photographe',
+    'site web créatif',
 
-    // Design & Branding
-    'identité visuelle',
-    'branding digital',
-    'logo professionnel',
-    'charte graphique',
-    'design d\'interface',
+    // Design & UX
     'UI design',
     'UX design',
-
-    // Technologies
-    'développement Next.js',
+    'design d\'interface',
     'site responsive',
     'mobile-first',
+
+    // Performance
     'site web rapide',
     'optimisation performance',
-
-    // Services Additionnels
-    'intégration CMS',
-    'CRM web',
-    'gestion contenu',
-    'formation site web',
-    'accompagnement digital',
-
-    // SEO & Performance
-    'référencement naturel',
     'optimisation SEO',
-    'site web optimisé',
+    'référencement naturel',
 
-    // Prix & Délais
-    'tarif site web',
-    'prix site web',
-    'à partir de 800€',
-    'site web abordable',
-    'création rapide site web',
+    // Solutions Complètes
+    'conception à la mise en ligne',
+    'solution web complète',
+    'accompagnement web',
 
-    // Localisation
-    'développeur web France',
-
-    // Nom
+    // Créateur
     'Thomas Giberné',
+    'développeur web France',
     'giberne.dev',
   ],
   authors: [{ name: 'Thomas Giberné' }],
@@ -112,15 +91,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://giberne.dev',
-    siteName: 'Thomas Giberné - Communication Digitale',
-    title: 'Créez une Présence en Ligne Impactante grâce à l\'IA',
-    description: 'Sites web modernes créés avec l\'intelligence artificielle. Design sur mesure, développement rapide, accompagnement complet pour artisans, commerçants et entrepreneurs. Dès 800€.',
+    siteName: 'The Crystal Lad',
+    title: 'The Crystal Lad | Création de Sites Web sur Mesure',
+    description: 'Studio web spécialisé dans la création de sites modernes. Design personnalisé, développement performant, intégration CMS/CRM. Solutions complètes du design à la mise en ligne pour artisans, commerçants, artistes et entrepreneurs.',
     images: [
       {
         url: '/images/pro-banner.png',
         width: 1200,
         height: 630,
-        alt: 'Thomas Giberné - Communication Digitale avec IA',
+        alt: 'The Crystal Lad - Studio de Création Web',
       },
     ],
   },
@@ -128,8 +107,8 @@ export const metadata: Metadata = {
   // --- TWITTER CARD (Partage sur Twitter) ---
   twitter: {
     card: 'summary_large_image',
-    title: 'Créez une Présence en Ligne Impactante grâce à l\'IA',
-    description: 'Sites web modernes créés avec l\'IA. Design sur mesure, développement rapide, accompagnement complet. Dès 800€.',
+    title: 'The Crystal Lad | Studio de Création Web',
+    description: 'Création de sites web modernes sur mesure. Design personnalisé, développement performant, CMS/CRM intégrés. Solutions complètes pour artisans, artistes et entrepreneurs.',
     images: ['/images/pro-banner.png'],
     creator: '@akisama_fr',
   },
@@ -164,20 +143,20 @@ export default function RootLayout({
         {/* Open Graph pour les previews réseaux sociaux */}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="fr_FR" />
-        <meta property="og:site_name" content="Thomas Giberné - Communication Digitale" />
-        <meta property="og:title" content="Créez une Présence en Ligne Impactante grâce à l'IA" />
-        <meta property="og:description" content="Sites web modernes créés avec l'intelligence artificielle. Design sur mesure, développement rapide, accompagnement complet pour artisans, commerçants et entrepreneurs. Dès 800€." />
+        <meta property="og:site_name" content="The Crystal Lad" />
+        <meta property="og:title" content="The Crystal Lad | Création de Sites Web sur Mesure" />
+        <meta property="og:description" content="Studio web spécialisé dans la création de sites modernes. Design personnalisé, développement performant, intégration CMS/CRM. Solutions complètes du design à la mise en ligne." />
         <meta property="og:url" content="https://giberne.dev" />
         <meta property="og:image" content="https://giberne.dev/images/pro-banner.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Thomas Giberné - Communication Digitale avec IA" />
+        <meta property="og:image:alt" content="The Crystal Lad - Studio de Création Web" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@akisama_fr" />
-        <meta name="twitter:title" content="Créez une Présence en Ligne Impactante grâce à l'IA" />
-        <meta name="twitter:description" content="Sites web modernes créés avec l'IA. Design sur mesure, développement rapide, accompagnement complet. Dès 800€." />
+        <meta name="twitter:title" content="The Crystal Lad | Studio de Création Web" />
+        <meta name="twitter:description" content="Création de sites web modernes sur mesure. Design personnalisé, développement performant, CMS/CRM intégrés." />
         <meta name="twitter:image" content="https://giberne.dev/images/pro-banner.png" />
 
         {/* Calendly CSS */}
