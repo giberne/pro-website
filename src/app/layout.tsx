@@ -104,10 +104,8 @@ export const metadata: Metadata = {
   creator: 'Thomas Giberné',
 
   // --- FAVICONS ---
-  icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
-    apple: '/favicon.svg',
-  },
+  // Next.js utilise automatiquement icon.svg dans src/app/
+  // Pas besoin de configuration manuelle ici
 
   // --- OPEN GRAPH (Partage sur les réseaux sociaux comme Facebook, LinkedIn) ---
   openGraph: {
