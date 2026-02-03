@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
   // --- METADONNÉES PRINCIPALES (SEO) ---
   title: 'The Crystal Lad | Création de Sites Web pour Artisans, Artistes & Entrepreneurs',
-  description: 'Studio web spécialisé dans la création de sites modernes sur mesure. Design personnalisé, développement performant, CMS/CRM intégrés. Du design à la mise en ligne, solutions complètes pour artisans, commerçants, artistes et consultants.',
+  description: 'Studio web spécialisé dans la création de sites modernes sur mesure. Design personnalisé, développement performant, CMS/CRM intégrés. Du design à la mise en ligne, solutions complètes pour artisans, commerçants, artistes et professionnel.',
   keywords: [
     // Nom du Studio
     'The Crystal Lad',

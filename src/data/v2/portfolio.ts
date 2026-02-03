@@ -59,6 +59,6 @@ export const projects: Project[] = [
     result:
       'Une page claire et efficace pour attirer des utilisateurs en pré-lancement. Design moderne et professionnel.',
     link: 'https://playlyst.akisama.fr',
-    image: '/portfolio/image 48.png',
+    image: '/portfolio/playlyst-home.png',
   },
 ]
