@@ -23,7 +23,7 @@ export const projects: Project[] = [
       'Optimisation des performances et des animations.',
     ],
     result:
-    'Une page d’accueil pensée comme un véritable point d’entrée produit.',
+    'Un portfolio qui propose une expérience utilisateur immersive et engageante.',
     link: 'https://akisama.fr',
     image: '/portfolio/akisama-fr.png',
   },
